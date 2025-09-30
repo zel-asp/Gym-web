@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+    --color-brand: #f97316;
+    --color-lightgray: var(--color-gray-700);
+    --color-gray: #1f2937;
+
+    --screen-custom_screen: {min: 600px, max:768px };
+}
+
+
+@layer components {
+    .flex-center {
+        @apply flex justify-center items-center;
+    }
+
+    .center-vertical {
+        @apply flex items-center;
+    }
+
+    .center-horizontal {
+        @apply flex justify-center;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+
+}
+
+body {
+    cursor: crosshair;
+    font-family: Poppins, sans-serif;
+}
+
+.LoginInput {
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    text-wrap: wrap;
+    margin-bottom: 10px;
+    font-size: 10px;
+}
+
+label {
+    font-size: small;
+}
+
+.extra {
+    font-size: 10px;
+}
+
+.hero-pattern {
+    background-color: rgba(249, 115, 22, 0.85);
+    background-image: linear-gradient(45deg, #f97316 0%, #fdba74 100%);
+}
+
+.offer-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.floating-img {
+    filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.2));
+}
+
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--color-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

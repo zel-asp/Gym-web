@@ -1,0 +1,22 @@
+<section class="py-16 bg-gray text-white" id="stats">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-sm">
+            <div>
+                <div class="stats-number text-3xl font-bold">16+</div>
+                <p class="text-brand">Years Experience</p>
+            </div>
+            <div>
+                <div class="stats-number text-3xl font-bold">50+</div>
+                <p class="text-brand">Expert Trainers</p>
+            </div>
+            <div>
+                <div class="stats-number text-3xl font-bold">5000+</div>
+                <p class="text-brand">Happy Members</p>
+            </div>
+            <div>
+                <div class="stats-number text-3xl font-bold">96%</div>
+                <p class="text-brand">Success Rate</p>
+            </div>
+        </div>
+    </div>
+</section>
