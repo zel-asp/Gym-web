@@ -11,6 +11,7 @@ A modern fitness web system designed to promote health and well-being, built wit
     - npm install
 
 ## Folder Structure
+<<<<<<< HEAD
 ├── public/         # Publicly accessible files (root of the web app)
 │ ├── assets/       # Static assets like images, JS, and CSS
 │ └── index.php     # Main entry point of the application
