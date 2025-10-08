@@ -11,7 +11,7 @@
         <!-- Landing Page -->
         <div class="w-full h-screen relative" id="landing">
 
-            <img src="assets/imgs/background.jpg" class="w-full h-full object-cover">
+            <img src="assets/imgs/background.jpg" class=" w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/30"></div>
             <div class="absolute b-0 t-100 bg-brand"></div>
 
@@ -46,7 +46,6 @@
         <?php require base_path('view/home/offer.php'); ?>
 
         <?php require base_path('view/home/gallery.php'); ?>
-
 
         <!-- stats section -->
         <?php require base_path('view/home/stats.php'); ?>

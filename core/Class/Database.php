@@ -37,7 +37,7 @@ class Database
         try {
             $result = $this->find();
             if (!$result) {
-                abort();
+                abort(401);
             } else {
                 return $result;
             }

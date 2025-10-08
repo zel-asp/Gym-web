@@ -15,10 +15,15 @@ function base_path($location)
     return BASE_PATH . $location;
 }
 
-function view_path($folder, $viewLocation)
+function view_path($folder, $viewLocation, $attritutes = [])
 {
+    extract($attritutes);
+
     return require base_path("view/{$folder}/{$viewLocation}");
 }
+
+
+
 
 function abort($code = 404)
 {

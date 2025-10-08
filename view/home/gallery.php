@@ -10,21 +10,13 @@
         <!-- Gallery Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Gallery Item 1 -->
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-                <img src="assets/imgs/background.jpg" alt="Mountain landscape"
-                    class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-            </div>
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-                <img src="assets/imgs/background.jpg" alt="Mountain landscape"
-                    class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-            </div>
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-                <img src="assets/imgs/background.jpg" alt="Mountain landscape"
-                    class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-            </div>
+            <?php for ($i = 0; $i < 3; $i++): ?>
+                <div
+                    class="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
+                    <img src="assets/imgs/background.jpg" alt="Mountain landscape"
+                        class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+            <?php endfor; ?>
 
         </div>
 
