@@ -1,4 +1,6 @@
 <?php
+//instance ot router class
+$router = new Core\Router;
 
 const BASE_PATH = __DIR__ . '/../';
 
@@ -12,9 +14,6 @@ spl_autoload_register(function ($class) {
     require base_path("core/Class/{$class}.php");
 });
 
-
-//instance ot router class
-$router = new Core\Router;
 
 //file paths
 $routes = require base_path('core/routing/routes.php');
