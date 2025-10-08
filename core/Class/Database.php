@@ -3,6 +3,7 @@
 namespace Core;
 
 use PDO;
+use Core\Response;
 
 class Database
 {
@@ -26,4 +27,22 @@ class Database
         return $this;
     }
 
+    public function find()
+    {
+        return $this->statement->fetchAll();
+    }
+
+    public function fetchOrAbort()
+    {
+        try {
+            $result = $this->find();
+            if (!$result) {
+                abort();
+            } else {
+                return $result;
+            }
+        } catch (\Throwable $error) {
+            echo $error->getMessage();
+        }
+    }
 }
