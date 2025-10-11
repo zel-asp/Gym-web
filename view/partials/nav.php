@@ -32,7 +32,8 @@
                 <a href="/login" class="hover:text-black">Login</a>
 
 
-                <button class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand">
+                <button
+                    class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer">
                     Join Now
                 </button>
             </div>
