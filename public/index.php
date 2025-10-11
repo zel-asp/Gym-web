@@ -21,7 +21,9 @@ $routes = require base_path('core/routing/routes.php');
 //uri
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-$router->routes($uri, 'GET');
+$method = $_POST['__method'] ?? $_SERVER['REQUEST_METHOD'];
+
+$router->routes($uri, $method);
 
 
 
