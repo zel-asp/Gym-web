@@ -26,33 +26,44 @@
                         <form action="" method="POST">
 
                             <div class="flex flex-col mt-5">
+                                <label for="loginName">Full Name*</label>
+                                <input type="text" id="loginName" name="name" class="LoginInput" required />
+                            </div>
+
+                            <div class="flex flex-col mt-3">
                                 <label for="loginEmail">Email*</label>
                                 <input type="email" id="loginEmail" name="email" class="LoginInput" required />
                             </div>
+
                             <div class="flex flex-col mb-0">
                                 <label for="loginPassword">Password*</label>
-                                <input type="password" id="loginPassword" name="password" class="LoginInput" required>
+                                <input type="password" id="loginPassword" name="password" class="LoginInput" required />
                             </div>
 
-                            <div class="text-xs md:text-sm lg:text-lg flex-center gap-5">
+                            <div class="text-xs md:text-sm lg:text-lg flex-center gap-5 mt-2">
                                 <div class="center-vertical gap-1">
-                                    <input type="checkbox" id="rememberLogin" name="remember" class="cursor-crosshair">
+                                    <input type="checkbox" id="rememberLogin" name="remember"
+                                        class="cursor-crosshair" />
                                     <label for="rememberLogin" class="extra cursor-pointer">Remember me</label>
                                 </div>
-
-                                <a href="" class="extra hover:underline">Forgot Password?</a>
                             </div>
 
                             <button
                                 class="w-full mt-3 bg-brand p-1 rounded-xl lg:p-2 hover:bg-white hover:text-brand cursor-pointer"
-                                name="login">Login</button>
+                                name="login">
+                                Login
+                            </button>
 
-                            <p class="text-xs text-center mt-2 ">Don't have account? <a href="#"
-                                    class="text-sky-500 hover:underline" data-show="#SignUp"
+                            <!-- Sign Up Link -->
+                            <p class="text-xs text-center mt-2">
+                                Don't have an account?
+                                <a href="#" class="text-sky-500 hover:underline" data-show="#SignUp"
                                     data-hide="#LogIn">Sign-up</a>
                             </p>
                         </form>
+
                     </div>
+
                     <div>
                         <img src="assets/imgs/logo.png" alt="padogskie Logo"
                             class="hidden md:block lg:w-[300px] w-[240px] mx-auto">
@@ -78,34 +89,47 @@
                         <form action="" method="POST">
 
                             <div class="flex flex-col mt-5">
-                                <label for="signupUsername">Username*</label>
+                                <label for="signupUsername" class="text-sm font-medium mb-1">Username*</label>
                                 <input type="text" id="signupUsername" name="username" class="LoginInput" required />
                             </div>
-                            <div class="flex flex-col mb-0">
-                                <label for="signupEmail">Email*</label>
-                                <input type="email" id="signupEmail" name="email" class="LoginInput" required>
-                            </div>
-                            <div class="flex flex-col mb-0">
-                                <label for="signupPassword">Create Password*</label>
-                                <input type="password" id="signupPassword" name="password" class="LoginInput" required>
-                            </div>
-                            <div class="flex flex-col mb-0">
-                                <label for="signupPasswordConfirm">Re-type Password*</label>
-                                <input type="password" id="signupPasswordConfirm" name="password_confirm"
-                                    class="LoginInput" required>
+
+
+                            <div class="flex flex-col mt-3">
+                                <label for="signupEmail" class="text-sm font-medium mb-1">Email*</label>
+                                <input type="email" id="signupEmail" name="email" class="LoginInput" required />
                             </div>
 
-                            <div class="flex-vertical gap-1 mt-2">
-                                <input type="checkbox" id="signupTerms" name="terms" class="cursor-crosshair">
-                                <label for="signupTerms" class="extra  cursor-pointer">Accept all the Terms and
-                                    Conditions</label>
+                            <div class="flex flex-col mt-3">
+                                <label for="signupPassword" class="text-sm font-medium mb-1">Create Password*</label>
+                                <input type="password" id="signupPassword" name="password" class="LoginInput"
+                                    required />
+                            </div>
+
+
+                            <div class="flex flex-col mt-3">
+                                <label for="signupPasswordConfirm" class="text-sm font-medium mb-1">Re-type
+                                    Password*</label>
+                                <input type="password" id="signupPasswordConfirm" name="password_confirm"
+                                    class="LoginInput" required />
+                            </div>
+
+
+                            <div class="flex items-center gap-2 mt-4">
+                                <input type="checkbox" id="signupTerms" name="terms" class="cursor-pointer accent-brand"
+                                    required />
+                                <label for="signupTerms" class="extra cursor-pointer text-sm">
+                                    Accept all the <a href="#" class="text-sky-500 hover:underline">Terms and
+                                        Conditions</a>
+                                </label>
                             </div>
 
                             <button
-                                class="w-full mt-3 bg-brand  p-1 rounded-xl lg:p-2 hover:bg-white hover:text-brand cursor-pointer"
-                                name="register">Register</button>
-
+                                class="w-full mt-4 bg-brand p-1 rounded-xl lg:p-2 hover:bg-white hover:text-brand cursor-pointer font-semibold"
+                                name="register">
+                                Register
+                            </button>
                         </form>
+
 
                         <p class="text-xs text-center mt-2">Already have account? <a href="#"
                                 class="text-sky-500 hover:underline" data-show="#LogIn" data-hide="#SignUp">Sign-In</a>

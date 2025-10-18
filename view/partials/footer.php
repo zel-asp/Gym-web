@@ -20,17 +20,18 @@
             <div>
                 <h3 class="text-gray text-xl font-bold mb-4 ">Contact</h3>
                 <ul class="space-y-2 text-gray-400">
-                    <li>Top 1 Metropolitan Claude</li>
-                    <li>Quezon City, Philippines</li>
+                    <li>Horacio Dela Costa Homes 2</li>
+                    <li>Caloocan City, Philippines</li>
                     <li>PadogskieWildgym@gmail.com</li>
-                    <li>87000</li>
+                    <li>Mr. Cyril P. Gatchalian</li>
                 </ul>
             </div>
             <div>
                 <h3 class="text-gray text-xl font-bold mb-4">Follow Us</h3>
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-brand"><i class="fab fa-tiktok text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-brand"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="https://www.facebook.com/groups/135169316896319" class="text-gray-400 hover:text-brand"><i
+                            class="fab fa-facebook text-xl"></i></a>
                     <a href="#" class="text-gray-400 hover:text-brand"><i class="fab fa-instagram text-xl"></i></a>
                 </div>
             </div>

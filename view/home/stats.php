@@ -2,15 +2,15 @@
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-sm">
             <div>
-                <div class="stats-number text-3xl font-bold">16+</div>
+                <div class="stats-number text-3xl font-bold">9+</div>
                 <p class="text-brand">Years Experience</p>
             </div>
             <div>
-                <div class="stats-number text-3xl font-bold">50+</div>
+                <div class="stats-number text-3xl font-bold">2</div>
                 <p class="text-brand">Expert Trainers</p>
             </div>
             <div>
-                <div class="stats-number text-3xl font-bold">5000+</div>
+                <div class="stats-number text-3xl font-bold">100+</div>
                 <p class="text-brand">Happy Members</p>
             </div>
             <div>
