@@ -35,15 +35,23 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 // Star rating
-document.querySelectorAll('#stars span').forEach((star, index) => {
+const stars = document.querySelectorAll('#stars span');
+const ratingInput = document.getElementById('feedback_rating');
+const feedbackForm = document.getElementById('feedbackForm');
+
+// Star click logic
+stars.forEach((star, index) => {
     star.addEventListener('click', () => {
-        document.querySelectorAll('#stars span').forEach((s, i) => {
+        stars.forEach((s, i) => {
             s.textContent = i <= index ? '★' : '☆';
             s.classList.toggle('text-yellow-400', i <= index);
             s.classList.toggle('text-gray-400', i > index);
         });
+        // Set hidden input value
+        ratingInput.value = index + 1;
     });
 });
+
 
 // Auto-close mobile menu on resize
 window.addEventListener('resize', () => {
@@ -53,5 +61,13 @@ window.addEventListener('resize', () => {
     }
 });
 
-// Set default tab
-document.querySelector('[data-target="dashboard"]').click();
+// Function to get URL query params
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Determine which tab to open
+const defaultTab = getQueryParam('tab') || 'dashboard';
+const tabButton = document.querySelector(`[data-target="${defaultTab}"]`);
+if (tabButton) tabButton.click();

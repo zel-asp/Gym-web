@@ -1,27 +1,123 @@
 <!-- Payment Section -->
-<section id="payment" class="tab-content hidden">
+<section id="payment" data-target="payment" class="tab-content hidden">
     <h3 class="text-xl font-bold mb-4">Membership Payment</h3>
-    <div class="bg-[#121f2e]  p-6 rounded-xl shadow-md w-full">
-        <form class="space-y-4">
-            <input type="text" placeholder="Full Name"
-                class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500" />
-            <select class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500">
-                <option>Select Plan</option>
-                <option>15 Days - ₱350</option>
-                <option>Monntly - ₱700</option>
-                <option>Quarterly - ₱2000</option>
-            </select>
-            <select class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500">
-                <option>Choose Payment Method</option>
-                <option>GCash</option>
-                <option>PayPal</option>
-            </select>
-            <div class="flex justify-end">
-                <button type="button"
-                    class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors w-full md:w-auto">
-                    Confirm Payment
+
+    <?php if (!empty($_SESSION['paymentError'])): ?>
+        <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+            <ul class="list-disc list-inside">
+                <?php foreach ($_SESSION['paymentError'] as $error): ?>
+                    <li><?= htmlspecialchars($error) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php unset($_SESSION['paymentError']); ?>
+    <?php endif; ?>
+
+
+    <?php if (empty($paymentInfo)): ?>
+        <!-- No payment yet -->
+        <div id="payment-form-container" class="bg-[#121f2e] p-6 rounded-xl shadow-md w-full">
+            <form action="/pay" method="POST">
+                <input type="text" name="fullname" placeholder="Full Name"
+                    value="<?= htmlspecialchars($info['fullname'] ?? '') ?>" required
+                    class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500 mb-3" />
+
+                <select id="plan-select" name="plan" required
+                    class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500 mb-3">
+                    <option value="">Select Plan</option>
+                    <option value="15 Days(Basic) - 350">15 Days - ₱350</option>
+                    <option value="Monthly(Regular) - 700">Monthly - ₱700</option>
+                    <option value="Quarterly(Premium) - 2000">Quarterly - ₱2000</option>
+                </select>
+
+                <select id="payment-method" name="payment_method" required
+                    class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500 mb-3">
+                    <option value="">Choose Payment Method</option>
+                    <option value="GCash">GCash</option>
+                    <option value="PayPal">PayPal</option>
+                </select>
+
+                <div class="flex justify-end">
+                    <button type="submit" id="confirm-payment-btn"
+                        class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors w-full md:w-auto">
+                        Confirm Payment
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
+    <?php else: ?>
+        <?php
+        $status = $paymentInfo['status'] ?? 'Pending';
+        $plan = htmlspecialchars($paymentInfo['plan'] ?? 'Unknown');
+        $amount = number_format($paymentInfo['amount'] ?? 0, 2);
+        $date = isset($paymentInfo['created_at'])
+            ? date('M j, Y', strtotime($paymentInfo['created_at']))
+            : date('M j, Y');
+
+        // UI indicators based on status
+        $isPending = $status === 'Pending';
+        $isExpired = $status === 'Expired';
+        $isSuccess = !$isPending && !$isExpired;
+        ?>
+
+        <div id="payment-status" class="bg-[#121f2e] p-6 rounded-xl shadow-md w-full mt-6">
+            <div class="text-center">
+                <div class="flex justify-center mb-4">
+                    <div class="w-20 h-20 rounded-full 
+                        <?= $isPending ? 'bg-yellow-500' : ($isExpired ? 'bg-gray-500' : 'bg-green-500') ?> 
+                        flex items-center justify-center">
+                        <i class="fas 
+                            <?= $isPending ? 'fa-hourglass-half' : ($isExpired ? 'fa-clock' : 'fa-check') ?> 
+                            text-white text-3xl"></i>
+                    </div>
+                </div>
+
+                <h4 class="text-xl font-bold mb-2">
+                    <?= $isPending ? 'Payment Processing...' : ($isExpired ? 'Membership Expired' : 'Payment Successful!') ?>
+                </h4>
+
+                <p class="text-gray-400 mb-6">
+                    <?= $isPending
+                        ? 'Your payment is being verified. Please wait for confirmation.'
+                        : ($isExpired
+                            ? 'Your membership period has ended. Please renew to continue.'
+                            : 'Thank you for your payment. Your membership is active.') ?>
+                </p>
+
+                <div class="border border-gray-700 rounded-lg p-4 mb-6 text-left">
+                    <h5 class="font-medium mb-3">Payment Details</h5>
+
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-400">Status:</span>
+                        <span class="font-medium 
+                            <?= $isPending ? 'text-yellow-400' : ($isExpired ? 'text-gray-400' : 'text-green-400') ?>">
+                            <?= htmlspecialchars($status) ?>
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-400">Plan:</span>
+                        <span id="success-plan" class="font-medium"><?= $plan ?></span>
+                    </div>
+
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-400">Amount Paid:</span>
+                        <span id="success-amount" class="font-medium">₱<?= $amount ?></span>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Date:</span>
+                        <span class="font-medium"><?= $date ?></span>
+                    </div>
+                </div>
+
+                <button type="button" id="new-payment"
+                    class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors w-full">
+                    <?= $isExpired ? 'Pay Again' : ($isPending ? 'Awaiting Confirmation' : 'Make Another Payment') ?>
                 </button>
             </div>
-        </form>
-    </div>
+        </div>
+    <?php endif; ?>
 </section>

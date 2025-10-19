@@ -5,7 +5,25 @@
 // ];
 
 $router->get('/', 'controller/home/index.controller.php');
-$router->post('/login', 'controller/auth/initAuth.php');
+
+$router->get('/signup', 'controller/auth/signup/signup.php');
+$router->post('/signup', 'controller/auth/signup/signup_post.php');
+
+$router->get('/login', 'controller/auth/login/initAuth.php');
+$router->post('/login', 'controller/auth/login/login_post.php');
+
+$router->get('/logout', 'controller/auth/logout.php');
+
+$router->post('/feedback', 'controller/dashboards/user/feedback.php');
+$router->post('/membership', 'controller/dashboards/user/membership.php');
+
+$router->post('/pay', 'controller/dashboards/user/payment.php');
+$router->get('/payment_success', 'controller/dashboards/user/paymentConfirmation.php');
+
+$router->put('/update', 'controller/dashboards/user/update.php');
+$router->delete('/destroy', 'controller/dashboards/user/destroy.php');
+
 $router->get('/Team', 'controller/home/team.controller.php');
 $router->get('/gallery', 'controller/home/fullGallery.controller.php');
-$router->get('/userdashboard', 'controller/dashboards/user.php');
+
+$router->get('/userdashboard', 'controller/dashboards/user/user.php');

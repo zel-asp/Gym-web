@@ -1,0 +1,107 @@
+<?php
+
+session_start();
+
+$errors = $_SESSION['errors'] ?? [];
+
+unset($_SESSION['errors']);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <?php require base_path('view/partials/head.php'); ?>
+
+
+    <body>
+        <div class="relative h-full md:h-screen bg-[url(/assets/imgs/background.jpg)] bg-cover bg-center text-white/80">
+            <!-- Sign-Up -->
+            <div id="SignUp" class="relative flex-center h-full font-[Poppins,sans-serif] font-medium ">
+                <div
+                    class="content flex-center  flex-col md:flex-row gap-5 md:gap-20 w-full max-w-4xl m-5 bg-white/10 backdrop-blur-md rounded-xl shadow-lg p-10 md:p-20">
+                    <div class="mt-5 md:hidden">
+                        <img src="assets/imgs/logo.png" alt="padogskie Logo" class="w-[150px] mx-auto">
+                    </div>
+                    <a href="/" class="absolute top-5 right-8 cursor-pointer">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </a>
+
+                    <div class="signIn_form">
+                        <h1 class="text-center md:text-start text-xl font-bold lg:text-2xl" id="Sign-Up-Title">Sign-up
+                        </h1>
+
+                        <?php if (!empty($errors)): ?>
+                            <div class="mt-3 w-auto ">
+                                <?php foreach ($errors as $error): ?>
+                                    <div
+                                        class="flex items-center gap-2 bg-red-50 border border-red-400 text-red-700 p-2 rounded-md">
+                                        <i class="fa-solid fa-circle-exclamation text-red-600 text-sm"></i>
+                                        <span class="text-xs font-small"><?= htmlspecialchars($error) ?></span>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <form action="/signup" method="POST">
+
+                            <div class="flex flex-col mt-5">
+                                <label for="signupUsername" class="text-sm font-medium mb-1">Username*</label>
+                                <input type="text" id="signupUsername" name="username" class="LoginInput" required />
+                            </div>
+
+
+                            <div class="flex flex-col mt-3">
+                                <label for="signupEmail" class="text-sm font-medium mb-1">Email*</label>
+                                <input type="email" id="signupEmail" name="email" class="LoginInput" required />
+                            </div>
+
+                            <div class="flex flex-col mt-3">
+                                <label for="signupPassword" class="text-sm font-medium mb-1">Create Password*</label>
+                                <input type="password" id="signupPassword" name="password" class="LoginInput"
+                                    required />
+                            </div>
+
+
+                            <div class="flex flex-col mt-3">
+                                <label for="confirm-password" class="text-sm font-medium mb-1">Re-type
+                                    Password*</label>
+                                <input type="password" id="signupPasswordConfirm" name="password_confirm"
+                                    class="LoginInput" required />
+                            </div>
+
+
+                            <div class="flex items-center gap-2 mt-4">
+                                <input type="checkbox" id="signupTerms" name="terms" class="cursor-pointer accent-brand"
+                                    required />
+                                <label for="signupTerms" class="extra cursor-pointer text-sm">
+                                    Accept all the <a href="#" class="text-sky-500 hover:underline">Terms and
+                                        Conditions</a>
+                                </label>
+                            </div>
+
+                            <button
+                                class="w-full mt-4 bg-brand p-1 rounded-xl lg:p-2 hover:bg-white hover:text-brand cursor-pointer font-semibold"
+                                name="register">
+                                Register
+                            </button>
+                        </form>
+
+
+                        <p class="text-xs text-center mt-2">Already have account?
+                            <a href="/login" class="text-sky-500 hover:underline" data-show="#LogIn"
+                                data-hide="#SignUp">Sign-In
+                            </a>
+                        </p>
+                    </div>
+                    <div>
+                        <img src="assets/imgs/logo.png" alt="padogskie Logo"
+                            class="hidden md:block lg:w-[350px] w-[290px] mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="assets/js/script.js"></script>
+    </body>

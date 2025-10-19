@@ -18,7 +18,7 @@
                 <div>
                     <span class="text-orange-400 font-semibold">How can I pay?</span> — Choose Payment
                     and
-                    select your preferred method.
+                    select your preferred method.x
                 </div>
             </li>
             <li class="flex items-start">

@@ -28,15 +28,34 @@
                 <li><a href="/#contact" class="hover:text-brand">Contact</a></li>
             </ul>
             <div
-                class="center-vertical flex-col justify-start md:flex-row gap-2 md:gap-4 text-brand font-medium mt-2 md:mt-0 md:ml-5 text-sm md:text-md">
-                <a href="/login" class="hover:text-black">Login</a>
+                class="center-vertical flex-col justify-start md:flex-row gap-2 md:gap-4 text-brand px-4 font-medium mt-2 md:mt-0 md:ml-5 text-sm md:text-md">
 
+                <?php if (!isset($_SESSION['user'])): ?>
+                    <!-- not logged in -->
+                    <a href="/login"
+                        class="hover:text-black bg-gray-100 w-full sm:w-70 md:w-auto rounded-lg px-4 py-2 text-center">
+                        Login
+                    </a>
 
-                <button
-                    class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer">
-                    Join Now
-                </button>
+                    <a href="#offer"
+                        class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer text-center">
+                        Join now
+                    </a>
+
+                <?php else: ?>
+                    <!-- logged in -->
+                    <a href="/logout"
+                        class="hover:text-black bg-gray-100 w-full sm:w-70 md:w-auto rounded-lg px-4 py-2 text-center">
+                        Logout
+                    </a>
+
+                    <a href="/userdashboard"
+                        class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer text-center">
+                        Dashboard
+                    </a>
+                <?php endif; ?>
             </div>
+
         </div>
     </div>
 </nav>

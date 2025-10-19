@@ -6,4 +6,4 @@ $config = require base_path('config/config.php');
 
 $db = new Database($config['database']);
 
-view_path('dashboards/user', 'index.php');
+view_path('auth', 'login.php');

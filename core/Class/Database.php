@@ -32,6 +32,17 @@ class Database
         return $this->statement->fetchAll();
     }
 
+    public function fetch_one()
+    {
+        return $this->statement->fetch();
+
+    }
+
+    public function lastInsertId()
+    {
+        return $this->connection->lastInsertId();
+    }
+
     public function fetchOrAbort()
     {
         try {
@@ -44,5 +55,10 @@ class Database
         } catch (\Throwable $error) {
             echo $error->getMessage();
         }
+    }
+
+    public function count()
+    {
+        return $this->statement->rowCount();
     }
 }

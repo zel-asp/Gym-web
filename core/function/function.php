@@ -17,6 +17,7 @@ function base_path($location)
 
 function view_path($folder, $viewLocation, $attritutes = [])
 {
+    //this will make associative array into variable and value
     extract($attritutes);
 
     return require base_path("view/{$folder}/{$viewLocation}");

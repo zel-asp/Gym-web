@@ -32,18 +32,7 @@ function initNavbarToggle() {
 }
 
 
-//login and sigup
-function initAuthElements() {
-    document.addEventListener('click', e => {
-        const btn = e.target.closest('[data-show]');
-        if (!btn) return;
-        e.preventDefault();
-        document.querySelector(btn.dataset.show).classList.remove('hidden');
-        document.querySelector(btn.dataset.hide).classList.add('hidden');
-    });
 
-}
 document.addEventListener('DOMContentLoaded', () => {
     initNavbarToggle();
-    initAuthElements();
 });
