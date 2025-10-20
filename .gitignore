@@ -6,6 +6,7 @@ tailwindcss
 padogskiedb.sql
 
 # Build output
+public/assets/css/style.css
 dist/
 build/
 
