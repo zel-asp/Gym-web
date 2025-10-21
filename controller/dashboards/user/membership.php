@@ -7,6 +7,11 @@ session_start();
 $config = require base_path('config/config.php');
 
 $db = new Database($config['database']);
+
+if (!isset($_SESSION['user'])) {
+    header('Location: /login');
+    exit();
+}
 try {
     if (isset($_POST['register'])) {
         $errors = [];
@@ -56,7 +61,6 @@ try {
             exit();
         }
 
-        // Insert profile
         $db->query(
             "INSERT INTO user_profiles (user_id, fullname, age, gender, contact, address, email, height, weight, medical_conditions) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",

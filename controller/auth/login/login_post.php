@@ -32,15 +32,31 @@ if (isset($_POST['login'])) {
                     $user['id']
                 ]);
 
-                $_SESSION['user'] = [
-                    'logged_in' => true,
-                    'id' => $user['id'],
-                    'username' => $user['username'],
-                    'email' => $user['email'],
-                    'token' => $sessionToken
-                ];
 
-                header('Location: /userdashboard');
+
+                if ($user['id'] === 1 && $user['email'] === 'admin_padogskie@gmail.com') {
+                    $_SESSION['admin'] = [
+                        'logged_in' => true,
+                        'role' => 'admin',
+                        'id' => $user['id'],
+                        'username' => $user['username'],
+                        'email' => $user['email'],
+                        'token' => $sessionToken
+                    ];
+                    header('Location: /adminDashboard');
+                } else {
+                    $_SESSION['user'] = [
+                        'logged_in' => true,
+                        'role' => 'user',
+                        'id' => $user['id'],
+                        'username' => $user['username'],
+                        'email' => $user['email'],
+                        'token' => $sessionToken
+                    ];
+
+                    header('Location: /userdashboard');
+                }
+
                 exit();
 
             } else {
@@ -49,6 +65,8 @@ if (isset($_POST['login'])) {
         } catch (Throwable $th) {
             $errors[] = 'Database error: ' . $th->getMessage();
         }
+
+
     }
 
     // store errors and redirect back

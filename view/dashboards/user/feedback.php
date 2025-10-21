@@ -5,6 +5,14 @@
     <div class=" space-y-4 w-full">
         <h3 class="text-xl font-bold text-white">User Feedbacks</h3>
 
+        <?php if (empty($feedback)): ?>
+            <div class="text-center p-6">
+                <p class="text-green-500 font-semibold mb-4">
+                    No feedback has been submitted yet.
+                </p>
+            </div>
+        <?php endif; ?>
+
         <?php foreach ($feedback as $feedbacks): ?>
             <div class="bg-[#1a2a3f] p-4 rounded-lg shadow">
                 <div class="flex justify-between items-center mb-2">

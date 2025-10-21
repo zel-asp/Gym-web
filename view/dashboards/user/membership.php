@@ -1,4 +1,4 @@
-<?php if ($membership_status['status'] === 'Active'): ?>
+<?php if (!empty($paymentInfo) && $paymentInfo['membership_status'] === 'Active'): ?>
     <section id="membership" data-target="membership" class="tab-content hidden text-black">
         <h3 class="text-xl font-bold mb-4 text-white">User Information</h3>
         <div class="bg-[#121f2e] p-6 rounded-xl shadow-md">
@@ -12,7 +12,7 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-                <?php unset($_SESSION['error']); // clear after displaying ?>
+                <?php unset($_SESSION['error']); ?>
             <?php endif; ?>
             <?php if (!empty($_SESSION['successful'])): ?>
                 <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
@@ -22,7 +22,7 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-                <?php unset($_SESSION['successful']); // clear after displaying ?>
+                <?php unset($_SESSION['successful']); ?>
             <?php endif; ?>
 
             <form method="POST" action="<?= !empty($info) ? '/update' : '/membership' ?>" class="space-y-6">

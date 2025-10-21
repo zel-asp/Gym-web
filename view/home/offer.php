@@ -20,7 +20,7 @@
                     <p class="text-lightgray mb-4">
                         Great for short-term fitness goals with unlimited access for two weeks.
                     </p>
-                    <a href="/userdashboard#payment"
+                    <a href="/userdashboard?tab=payment"
                         class="text-brand font-bold center-vertical underline w-35 rounded-md p-2 hover:bg-brand hover:text-white transition-all duration-300 ease-in-out">
                         Subscribe<i class="fas fa-arrow-right ml-2 text-sm"></i>
                     </a>
@@ -38,7 +38,7 @@
                         Best value for regular members with full access all month long.
                     </p>
                     <!-- if registered it will go to payment section of user admin if not in login page -->
-                    <a href="/userdashboard#payment"
+                    <a href="/userdashboard?tab=payment"
                         class="text-brand font-bold center-vertical underline w-35 rounded-md p-2 hover:bg-brand hover:text-white transition-all duration-300 ease-in-out">
                         Subscribe <i class="fas fa-arrow-right ml-2 text-sm"></i>
                     </a>
@@ -54,7 +54,7 @@
                     <p class="text-justfy text-lightgray mb-4">
                         Unlock three months of unlimited access — the best deal for dedicated members.
                     </p>
-                    <a href="/userdashboard#payment"
+                    <a href="/userdashboard?tab=payment"
                         class="text-brand font-bold center-vertical underline w-35 rounded-md p-2 hover:bg-brand hover:text-white transition-all duration-300 ease-in-out">
                         Subscribe <i class="fas fa-arrow-right ml-2 text-sm"></i>
                     </a>

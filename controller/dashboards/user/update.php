@@ -8,6 +8,11 @@ $config = require base_path('config/config.php');
 
 $db = new Database($config['database']);
 
+if (!isset($_SESSION['user'])) {
+    header('Location: /login');
+    exit();
+}
+
 try {
 
     if (isset($_POST['update'])) {
@@ -66,6 +71,7 @@ try {
         header('Location: /userdashboard?tab=membership');
         exit();
     }
+
 
 } catch (\Throwable $th) {
     echo $th->getMessage() . ' ' . $th->getLine() . ' ' . $th->getFile();

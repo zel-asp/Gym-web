@@ -9,7 +9,7 @@ $config = require base_path('config/config.php');
 $db = new Database($config['database']);
 
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']) ) {
     header('Location: /login');
     exit();
 }
@@ -28,13 +28,6 @@ if (!$dbUser || $dbUser['session_token'] !== $token) {
     exit();
 }
 
-//dashboard
-$membership_status = $db->query(
-    'SELECT plan_name, status, DATE_FORMAT(last_payment, "%M %d, %Y") AS last_payment FROM memberships WHERE user_id = ?',
-    [$userId]
-)->fetch_one();
-
-
 //feedback
 $feedback = $db->query('SELECT name, feedback_text, rating FROM feedback ORDER BY created_at DESC LIMIT 15')->find();
 
@@ -49,13 +42,20 @@ $paymentId = $_SESSION['paymentId'] ?? '';
 
 $paymentInfo = $db->query('SELECT * FROM payments WHERE id = ? AND user_id = ?', [$paymentId, $userId])->fetch_one();
 
+if (!is_array($paymentInfo)) {
+    $paymentInfo = ['membership_status' => 'Expired'];
+}
+
+
 $paymentInfo = $db->query('SELECT * FROM payments WHERE user_id = ?', [$userId])->fetch_one();
+
+$expiryDate = null;
 
 if ($paymentInfo) {
     $paymentDate = new DateTime($paymentInfo['payment_date']);
     $now = new DateTime();
 
-    $daysValid = match ($paymentInfo['plan']) {
+    $daysValid = match ($paymentInfo['status']) {
         'Basic' => 15,
         'Regular' => 30,
         'Premium' => 90,
@@ -66,16 +66,20 @@ if ($paymentInfo) {
     $expiryDate->modify("+{$daysValid} days");
 
     if ($now > $expiryDate && $paymentInfo['status'] !== 'Expired') {
-        $db->query("UPDATE payments SET status = 'Expired' WHERE id = ?", [$paymentInfo['id']]);
-        $paymentInfo['status'] = 'Expired'; // reflect immediately
+        $db->query("UPDATE payments SET status = 'Expired' WHERE id = ? && user_id = ?", [
+            $paymentInfo['id'],
+            $userId
+        ]);
+        $paymentInfo['status'] = 'Expired';
     }
 }
 
+
 view_path('dashboards/user', 'index.php', [
     'username' => $username,
-    'membership_status' => $membership_status,
     'feedback' => $feedback,
     'info' => $info,
+    'expiryDate' => $expiryDate,
     'paymentInfo' => $paymentInfo
 ]);
 

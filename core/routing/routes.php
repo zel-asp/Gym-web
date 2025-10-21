@@ -20,6 +20,7 @@ $router->post('/membership', 'controller/dashboards/user/membership.php');
 $router->post('/pay', 'controller/dashboards/user/payment.php');
 $router->get('/payment_success', 'controller/dashboards/user/paymentConfirmation.php');
 
+//user 
 $router->put('/update', 'controller/dashboards/user/update.php');
 $router->delete('/destroy', 'controller/dashboards/user/destroy.php');
 
@@ -27,3 +28,8 @@ $router->get('/Team', 'controller/home/team.controller.php');
 $router->get('/gallery', 'controller/home/fullGallery.controller.php');
 
 $router->get('/userdashboard', 'controller/dashboards/user/user.php');
+$router->get('/adminDashboard', 'controller/dashboards/admin/get.php');
+
+//admin
+$router->delete('/userDelete', 'controller/dashboards/admin/destroy.php');
+$router->patch('/updateMembership', 'controller/dashboards/admin/patch.php');

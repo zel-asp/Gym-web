@@ -16,6 +16,7 @@ try {
         $plan = trim($_POST['plan']); // Example: "15 Days(Basic) - 350"
         $payment_method = trim($_POST['payment_method']);
         $userId = $_SESSION['user']['id'];
+        $email = $_SESSION['user']['email'];
         $paymentError = [];
 
         // Validate required fields
@@ -47,10 +48,11 @@ try {
         }
 
         $db->query(
-            "INSERT INTO payments (user_id, name, plan, amount, payment_method, status) 
-             VALUES (?, ?, ?, ?, ?, 'Pending')",
-            [$userId, $fullname, $plan_name, $amount, $payment_method]
+            "INSERT INTO payments (user_id, name,email, plan, amount, payment_method, status) 
+             VALUES (?,?, ?, ?, ?, ?, 'Pending')",
+            [$userId, $fullname, $email, $plan_name, $amount, $payment_method]
         );
+
 
         $_SESSION['paymentId'] = $db->lastInsertId();
 

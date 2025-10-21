@@ -18,9 +18,10 @@
         <!-- No payment yet -->
         <div id="payment-form-container" class="bg-[#121f2e] p-6 rounded-xl shadow-md w-full">
             <form action="/pay" method="POST">
-                <input type="text" name="fullname" placeholder="Full Name"
-                    value="<?= htmlspecialchars($info['fullname'] ?? '') ?>" required
-                    class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500 mb-3" />
+                <input type="text" name="fullname" placeholder="Full Name" value="<?= htmlspecialchars($info['fullname'] ?? $_SESSION['user']['username']); ?>
+" required
+                        class=" p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500
+                mb-3" />
 
                 <select id="plan-select" name="plan" required
                     class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500 mb-3">
@@ -56,7 +57,7 @@
             ? date('M j, Y', strtotime($paymentInfo['created_at']))
             : date('M j, Y');
 
-        // UI indicators based on status
+
         $isPending = $status === 'Pending';
         $isExpired = $status === 'Expired';
         $isSuccess = !$isPending && !$isExpired;
@@ -111,12 +112,20 @@
                         <span class="text-gray-400">Date:</span>
                         <span class="font-medium"><?= $date ?></span>
                     </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Expiration Date:</span>
+                        <span class="font-medium"><?= htmlspecialchars($expiryDate->format('F j, Y')); ?></span>
+                    </div>
                 </div>
 
-                <button type="button" id="new-payment"
-                    class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors w-full">
-                    <?= $isExpired ? 'Pay Again' : ($isPending ? 'Awaiting Confirmation' : 'Make Another Payment') ?>
-                </button>
+                <?php if ($paymentInfo['status'] === 'Expired'): ?>
+                    <div class="flex justify-between">
+                        <button type="button" id="new-payment"
+                            class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors ">
+                            Pay again
+                        </button>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     <?php endif; ?>

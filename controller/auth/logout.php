@@ -6,7 +6,7 @@ $config = require base_path('config/config.php');
 
 $db = new Database($config['database']);
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['user']) && isset($_SESSION['admin'])) {
 
     $db->query('UPDATE users SET session_token = NULL WHERE id = ?', [$_SESSION['user']['id']]);
 

@@ -21,12 +21,27 @@
                     select your preferred method.x
                 </div>
             </li>
-            <li class="flex items-start">
+            <li>
                 <span class="text-orange-400 mr-2 mt-1"><i class="fas fa-question-circle"></i></span>
+                <span class="text-orange-400 font-semibold">Need help?</span>
+            </li>
+            <li class="flex items-start">
+
                 <div>
-                    <span class="text-orange-400 font-semibold">Need help?</span> — Email us at <span
-                        class="text-orange-400">support@padogskeigym.com</span>
+                    <span>Email us at</span>
+                    <a href="https://mail.google.com/mail/?view=cm&to=janzeldols@gmail.com" target="_blank"
+                        class="text-orange-400 underline hover:text-orange-500">
+                        janzeldols@gmail.com
+                    </a>
+
                 </div>
+            </li>
+            <li>
+                <span ">Message Us on</span>
+                <a href=" https://www.facebook.com/groups/135169316896319" target="_blank"
+                    class="text-orange-400 underline hover:text-orange-500">
+                    Facebook
+                    </a>
             </li>
         </ul>
     </div>

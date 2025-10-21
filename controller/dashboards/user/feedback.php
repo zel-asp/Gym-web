@@ -35,11 +35,9 @@ if (isset($_POST['feedback'])) {
     } elseif (strlen($feedback_text) > 100) {
         $errors[] = "Only less than 100 characters allowed";
     }
-    // Validate rating
     if ($rating < 1 || $rating > 5) {
         $errors[] = "Please provide a valid rating between 1 and 5";
     }
-    // Insert feedback if no errors
     if (empty($errors)) {
         $db->query(
             "INSERT INTO feedback (user_id, name, email, feedback_text, rating) VALUES (?, ?, ?, ?, ?)",

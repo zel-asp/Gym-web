@@ -30,7 +30,7 @@
             <div
                 class="center-vertical flex-col justify-start md:flex-row gap-2 md:gap-4 text-brand px-4 font-medium mt-2 md:mt-0 md:ml-5 text-sm md:text-md">
 
-                <?php if (!isset($_SESSION['user'])): ?>
+                <?php if (!isset($_SESSION['user']) && !isset($_SESSION['admin'])): ?>
                     <!-- not logged in -->
                     <a href="/login"
                         class="hover:text-black bg-gray-100 w-full sm:w-70 md:w-auto rounded-lg px-4 py-2 text-center">
@@ -41,7 +41,6 @@
                         class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer text-center">
                         Join now
                     </a>
-
                 <?php else: ?>
                     <!-- logged in -->
                     <a href="/logout"
@@ -49,11 +48,19 @@
                         Logout
                     </a>
 
-                    <a href="/userdashboard"
-                        class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer text-center">
-                        Dashboard
-                    </a>
+                    <?php if (isset($_SESSION['admin'])): ?>
+                        <a href="/adminDashboard"
+                            class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer text-center">
+                            Dashboard
+                        </a>
+                    <?php else: ?>
+                        <a href="/userdashboard"
+                            class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer text-center">
+                            Dashboard
+                        </a>
+                    <?php endif; ?>
                 <?php endif; ?>
+
             </div>
 
         </div>

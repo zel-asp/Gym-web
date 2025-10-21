@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <aside class="sidebar w-64 bg-[#121f2e] p-5 flex flex-col justify-between fixed lg:static h-full z-50">
     <div>
-        <h1 class="text-xl font-bold mb-8 text-center hidden lg:block">🏋️‍♂️ Padogskei Gym</h1>
+        <h1 class="text-xl font-bold mb-8 text-center hidden lg:block">Padogskei Gym</h1>
         <nav class="space-y-3">
             <button class="tab-btn flex items-center w-full px-4 py-3 rounded-lg hover:bg-[#1c2d42] transition-colors"
                 data-target="dashboard">
@@ -27,6 +27,13 @@
                 data-target="settings">
                 <span class="mr-3 text-lg"><i class="fas fa-cog"></i></span> Settings
             </button>
+            <a href="/">
+                <div
+                    class="lg:hidden flex items-center space-x-3 text-blue-500 p-4 cursor-pointe rounded-lg hover:bg-[#1c2d42] transition-colors ">
+                    <span class="fa fa-arrow-left "></span>
+                    <p>home page</p>
+                </div>
+            </a>
         </nav>
     </div>
     <div class="mt-8 text-center hidden lg:block">
