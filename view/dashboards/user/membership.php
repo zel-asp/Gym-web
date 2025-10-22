@@ -60,7 +60,7 @@
                             required />
 
                         <input type="email" name="email" placeholder="Email Address"
-                            value="<?= htmlspecialchars($info['email'] ?? $_SESSION['user']['username']) ?>"
+                            value="<?= htmlspecialchars($info['email'] ?? $_SESSION['user']['email']) ?>"
                             class="p-3 rounded bg-white w-full focus:outline-none focus:ring-1 focus:ring-orange-500 md:col-span-2"
                             required />
                     </div>

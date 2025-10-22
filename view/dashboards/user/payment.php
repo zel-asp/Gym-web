@@ -19,8 +19,7 @@
         <div id="payment-form-container" class="bg-[#121f2e] p-6 rounded-xl shadow-md w-full">
             <form action="/pay" method="POST">
                 <input type="text" name="fullname" placeholder="Full Name" value="<?= htmlspecialchars($info['fullname'] ?? $_SESSION['user']['username']); ?>
-" required
-                        class=" p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500
+" required class=" p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500
                 mb-3" />
 
                 <select id="plan-select" name="plan" required
@@ -76,7 +75,7 @@
                 </div>
 
                 <h4 class="text-xl font-bold mb-2">
-                    <?= $isPending ? 'Payment Processing...' : ($isExpired ? 'Membership Expired' : 'Payment Successful!') ?>
+                    <?= $isPending ? 'Payment Processing...' : ($isExpired ? 'Membership Expired' : 'You are a member') ?>
                 </h4>
 
                 <p class="text-gray-400 mb-6">
@@ -84,7 +83,7 @@
                         ? 'Your payment is being verified. Please wait for confirmation.'
                         : ($isExpired
                             ? 'Your membership period has ended. Please renew to continue.'
-                            : 'Thank you for your payment. Your membership is active.') ?>
+                            : 'Thank you for your payment. Your membership is still active.') ?>
                 </p>
 
                 <div class="border border-gray-700 rounded-lg p-4 mb-6 text-left">
@@ -99,11 +98,6 @@
                     </div>
 
                     <div class="flex justify-between mb-2">
-                        <span class="text-gray-400">Plan:</span>
-                        <span id="success-plan" class="font-medium"><?= $plan ?></span>
-                    </div>
-
-                    <div class="flex justify-between mb-2">
                         <span class="text-gray-400">Amount Paid:</span>
                         <span id="success-amount" class="font-medium">₱<?= $amount ?></span>
                     </div>
@@ -112,10 +106,12 @@
                         <span class="text-gray-400">Date:</span>
                         <span class="font-medium"><?= $date ?></span>
                     </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-400">Expiration Date:</span>
-                        <span class="font-medium"><?= htmlspecialchars($expiryDate->format('F j, Y')); ?></span>
-                    </div>
+                    <?php if ($paymentInfo['status'] !== 'Pending'): ?>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Expiration Date:</span>
+                            <span class="font-medium"><?= htmlspecialchars($expiryDate->format('F j, Y')); ?></span>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <?php if ($paymentInfo['status'] === 'Expired'): ?>

@@ -1,4 +1,3 @@
-
 // Sidebar toggle for mobile
 const mobileMenuButton = document.getElementById('mobileMenuButton');
 const sidebar = document.getElementById('sidebar');
@@ -33,27 +32,34 @@ if (closeSidebarBtn) {
 // Navigation and tab persistence
 const navLinks = document.querySelectorAll('.nav-link');
 const pages = document.querySelectorAll('.page-content');
+const params = new URLSearchParams(window.location.search);
+const currentTab = params.get('tab') || 'dashboard';
 
 function showPage(targetPage) {
     // Hide all pages
     pages.forEach(page => page.classList.remove('active'));
-    // Show the selected one
+
+    // Show the selected page
     const activePage = document.getElementById(targetPage);
     if (activePage) activePage.classList.add('active');
 
-    // Update active sidebar link
-    navLinks.forEach(l => l.classList.remove('active'));
-    document.querySelector(`.nav-link[data-page="${targetPage}"]`)?.classList.add('active');
+    // Update sidebar link highlight
+    navLinks.forEach(link => link.classList.remove('active', 'bg-brand', 'text-white'));
+    const activeLink = document.querySelector(`.nav-link[data-page="${targetPage}"]`);
+    if (activeLink) activeLink.classList.add('active', 'bg-brand', 'text-white');
 }
+
+// On page load, show correct page
+showPage(currentTab);
 
 // Handle sidebar link clicks
 navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', e => {
         e.preventDefault();
         const targetPage = link.dataset.page;
         showPage(targetPage);
 
-        //Update the URL (no reload)
+        // Update URL without reload
         const url = new URL(window.location);
         url.searchParams.set('tab', targetPage);
         window.history.replaceState({}, '', url);
@@ -63,8 +69,3 @@ navLinks.forEach(link => {
         overlay.classList.remove('open');
     });
 });
-
-// On page load, open correct section based on ?tab=
-const params = new URLSearchParams(window.location.search);
-const currentTab = params.get('tab') || 'dashboard';
-showPage(currentTab);

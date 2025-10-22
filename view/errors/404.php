@@ -3,26 +3,41 @@
 
     <?php require base_path('view/partials/head.php'); ?>
 
+    <body class="h-screen relative overflow-hidden">
 
-    <body>
-        <div class="bg-indigo-900 relative overflow-hidden h-screen">
-            <img src="https://external-preview.redd.it/4MddL-315mp40uH18BgGL2-5b6NIPHcDMBSWuN11ynM.jpg?width=960&crop=smart&auto=webp&s=b98d54a43b3dac555df398588a2c791e0f3076d9"
-                class="absolute h-full w-full object-cover" />
-            <div class="inset-0 bg-black opacity-25 absolute">
-            </div>
-            <div class="container flex-col mx-auto px-6 md:px-12 relative z-10 center-vertical py-32 xl:py-40">
-                <div class="w-full font-mono  flex-col center-vertical relative z-10">
-                    <h1 class="font-extrabold text-5xl text-center text-white leading-tight mt-4">
-                        You are all alone here
-                    </h1>
-                    <a href="/" class="font-extrabold text-blue-500 hover:text-sky-500 underline text-5xl">Go
-                        back</a>
-                    <p class="font-extrabold text-8xl my-44 text-white animate-bounce">
-                        404
-                    </p>
-                </div>
 
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black opacity-25"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 md:px-12">
+            <h1 class="text-white text-5xl md:text-6xl font-extrabold mb-6">
+                401 Error
+            </h1>
+
+            <h4 class="text-white text-2xl md:text-3xl font-light mb-4">
+                Oops, something went wrong.
+            </h4>
+
+            <h5 class="text-white text-xl md:text-2xl font-light mb-6">
+                Invalid credentials.
+            </h5>
+
+            <!-- Links -->
+            <div class="flex flex-col md:flex-row gap-6 mb-20">
+                <a href="/login"
+                    class="text-blue-500 hover:text-sky-400 text-xl md:text-2xl font-extrabold underline transition">
+                    Sign in
+                </a>
+                <a href="/"
+                    class="text-blue-500 hover:text-sky-400 text-xl md:text-2xl font-extrabold underline transition">
+                    Go back
+                </a>
             </div>
+
+            <!-- GIF -->
+            <img src="https://media2.giphy.com/media/830H0uF08yM5J29qjf/source.gif"
+                class="w-64 md:w-80 rounded-lg shadow-lg animate-bounce" alt="Funny error gif">
         </div>
 
         <?php require base_path('view/partials/footer.php'); ?>

@@ -8,6 +8,7 @@ $config = require base_path('config/config.php');
 $db = new Database($config['database']);
 
 if (!isset($_SESSION['admin'])) {
+    abort(401);
     header('Location: /login');
     exit();
 }
@@ -43,9 +44,9 @@ $search = $_GET['search'] ?? '';
 $statusFilter = $_GET['status'] ?? '';
 $membershipFilter = $_GET['membership'] ?? '';
 
-// Build the base query
 $query = "
     SELECT 
+        u.id AS user_id,
         p.id AS payment_id,
         u.username,
         u.email,
@@ -54,46 +55,75 @@ $query = "
         p.membership_status,
         p.payment_date
     FROM users u
-    INNER JOIN payments p ON u.id = p.user_id
-    WHERE p.payment_date = (
-        SELECT MAX(p2.payment_date)
-        FROM payments p2
-        WHERE p2.user_id = u.id
-    )
+    LEFT JOIN payments p ON u.id = p.user_id
+      AND p.payment_date = (
+          SELECT MAX(p2.payment_date)
+          FROM payments p2
+          WHERE p2.user_id = u.id
+      )
 ";
 
-// Add filters dynamically
 $params = [];
 
+// filters (optional)
 if (!empty($search)) {
-    $query .= " AND (u.username LIKE ? OR u.email LIKE ?)";
+    $query .= " WHERE u.username LIKE ? OR u.email LIKE ?";
     $params[] = "%$search%";
     $params[] = "%$search%";
 }
+$users = $db->query($query, $params)->find();
 
+
+// Payment query
+$paymentQuery = "
+    SELECT 
+        p.id AS payment_id,
+        u.id AS user_id,
+        u.username,
+        u.email,
+        p.amount,
+        p.payment_method,
+        p.status,
+        p.membership_status,
+        p.payment_date
+    FROM payments p
+    LEFT JOIN users u ON p.user_id = u.id
+    WHERE 1
+";
+
+
+$paymentParams = [];
+
+// filters
+if (!empty($search)) {
+    $paymentQuery .= " AND (u.username LIKE ? OR u.email LIKE ?)";
+    $paymentParams[] = "%$search%";
+    $paymentParams[] = "%$search%";
+}
 if (!empty($statusFilter) && $statusFilter !== 'All') {
-    $query .= " AND p.status = ?";
-    $params[] = $statusFilter;
+    $paymentQuery .= " AND p.status = ?";
+    $paymentParams[] = $statusFilter;
 }
-
 if (!empty($membershipFilter) && $membershipFilter !== 'All') {
-    $query .= " AND p.membership_status = ?";
-    $params[] = $membershipFilter;
+    $paymentQuery .= " AND p.membership_status = ?";
+    $paymentParams[] = $membershipFilter;
 }
 
-$query .= " ORDER BY p.payment_date DESC";
+$paymentQuery .= " ORDER BY p.payment_date DESC";
 
-$Payment = $db->query($query, $params)->find();
+// fetch all payments
+$payments = $db->query($paymentQuery, $paymentParams)->find();
 
 
 
-
+//recent feedbakcs
 $recentFeedback = $db->query("
                 SELECT *
                 FROM feedback
                 ORDER BY created_at DESC
                 LIMIT 1
             ")->find();
+
 
 
 // Total feedback
@@ -108,5 +138,6 @@ view_path('dashboards/admin', 'index.php', [
     'recentPayments' => $recentPayments,
     'recentFeedback' => $recentFeedback,
     'recentPayment' => $recentPayment,
-    'paymentRecord' => $Payment
+    'users' => $users,
+    'payments' => $payments
 ]);

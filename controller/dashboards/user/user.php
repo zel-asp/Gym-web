@@ -9,7 +9,7 @@ $config = require base_path('config/config.php');
 $db = new Database($config['database']);
 
 
-if (!isset($_SESSION['user']) ) {
+if (!isset($_SESSION['user'])) {
     header('Location: /login');
     exit();
 }
@@ -20,6 +20,7 @@ $token = $_SESSION['user']['token'];
 
 $stmt = $db->query('SELECT session_token FROM users WHERE id = ?', [$userId]);
 $dbUser = $stmt->fetch_one();
+
 
 if (!$dbUser || $dbUser['session_token'] !== $token) {
     session_destroy();
@@ -42,37 +43,45 @@ $paymentId = $_SESSION['paymentId'] ?? '';
 
 $paymentInfo = $db->query('SELECT * FROM payments WHERE id = ? AND user_id = ?', [$paymentId, $userId])->fetch_one();
 
-if (!is_array($paymentInfo)) {
-    $paymentInfo = ['membership_status' => 'Expired'];
-}
-
-
-$paymentInfo = $db->query('SELECT * FROM payments WHERE user_id = ?', [$userId])->fetch_one();
-
 $expiryDate = null;
 
 if ($paymentInfo) {
     $paymentDate = new DateTime($paymentInfo['payment_date']);
     $now = new DateTime();
 
-    $daysValid = match ($paymentInfo['status']) {
+    // Determine validity based on plan/status
+    $daysValid = match ($paymentInfo['status'] ?? '') {
         'Basic' => 15,
         'Regular' => 30,
         'Premium' => 90,
+        'Pending' => 0,
         default => 0
     };
 
-    $expiryDate = clone $paymentDate;
-    $expiryDate->modify("+{$daysValid} days");
+    //calculate teh exp date
+    $expiryDate = (clone $paymentDate)->modify("+{$daysValid} days");
+
+    // upate expiration date regardless of status
+    if (!$paymentInfo['expiration_date'] || $paymentInfo['expiration_date'] === '0000-00-00') {
+        $expiryDateStr = $expiryDate->format('Y-m-d');
+
+        $db->query("UPDATE payments SET expiration_date = ? WHERE id = ?", [
+            $expiryDateStr,
+            $paymentInfo['id']
+        ]);
+
+        $paymentInfo['expiration_date'] = $expiryDateStr;
+        $_SESSION['expiration_date'] = $expiryDateStr;
+    }
 
     if ($now > $expiryDate && $paymentInfo['status'] !== 'Expired') {
-        $db->query("UPDATE payments SET status = 'Expired' WHERE id = ? && user_id = ?", [
-            $paymentInfo['id'],
-            $userId
+        $db->query("UPDATE payments SET status = 'Expired' WHERE id = ?", [
+            $paymentInfo['id']
         ]);
         $paymentInfo['status'] = 'Expired';
     }
 }
+
 
 
 view_path('dashboards/user', 'index.php', [

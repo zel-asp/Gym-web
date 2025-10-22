@@ -31,5 +31,6 @@ $router->get('/userdashboard', 'controller/dashboards/user/user.php');
 $router->get('/adminDashboard', 'controller/dashboards/admin/get.php');
 
 //admin
-$router->delete('/userDelete', 'controller/dashboards/admin/destroy.php');
+$router->delete('/userDelete', 'controller/dashboards/admin/deleteUser.php');
+$router->delete('/deletePayment', 'controller/dashboards/admin/deletePayment.php');
 $router->patch('/updateMembership', 'controller/dashboards/admin/patch.php');

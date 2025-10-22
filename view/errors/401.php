@@ -3,29 +3,30 @@
 
     <?php require base_path('view/partials/head.php'); ?>
 
+    <body class="bg-green-200 text-gray-800 font-sans min-h-screen flex flex-col justify-center items-center">
 
-    <body>
-        <div class="bg-indigo-900 relative overflow-hidden h-screen">
-            <img src="https://external-preview.redd.it/4MddL-315mp40uH18BgGL2-5b6NIPHcDMBSWuN11ynM.jpg?width=960&crop=smart&auto=webp&s=b98d54a43b3dac555df398588a2c791e0f3076d9"
-                class="absolute h-full w-full object-cover" />
-            <div class="inset-0 bg-black opacity-25 absolute">
+        <h1 class="text-black font-montserrat text-5xl md:text-6xl font-light mb-10 text-center">401 Error</h1>
+
+        <div class="flex flex-col md:flex-row items-center justify-center gap-10 px-4">
+            <!-- Text Column -->
+            <div class="flex flex-col items-center text-center space-y-4">
+                <h4 class="text-2xl font-light">Oops, something went wrong.</h4>
+                <h5 class="text-xl font-light">Invalid credentials.</h5>
+                <p class="text-gray-700">
+                    Click here to <a href="/login" class="text-indigo-600 hover:underline">signin</a>
+                </p>
+                <p class="text-gray-700">
+                    Click here to <a href="/" class="text-indigo-600 hover:underline">Go back</a>
+                </p>
             </div>
-            <div class="container flex-col mx-auto px-6 md:px-12 relative z-10 center-vertical py-32 xl:py-40">
-                <div class="w-full font-mono  flex-col center-vertical relative z-10">
-                    <h1 class="font-extrabold text-5xl text-center text-white leading-tight mt-4">
-                        You are anauthorized
-                    </h1>
-                    <a href="/" class="font-extrabold text-blue-500 hover:text-sky-500 underline text-5xl">Go
-                        back</a>
-                    <p class="font-extrabold text-8xl my-44 text-white animate-bounce">
-                        404
-                    </p>
-                </div>
 
+            <!-- Image Column -->
+            <div class="flex justify-center">
+                <img src="https://media2.giphy.com/media/830H0uF08yM5J29qjf/source.gif"
+                    class="w-64 md:w-80 rounded-lg shadow-lg" alt="Funny error gif">
             </div>
         </div>
 
-        <?php require base_path('view/partials/footer.php'); ?>
     </body>
 
 </html>
