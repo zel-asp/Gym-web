@@ -37,8 +37,7 @@ $recentPayment = $db->query("
         LIMIT 1
     ")->fetch_one();
 
-
-//select all
+//select all users
 // Get filters from query string
 $search = $_GET['search'] ?? '';
 $statusFilter = $_GET['status'] ?? '';
@@ -73,7 +72,6 @@ if (!empty($search)) {
 }
 $users = $db->query($query, $params)->find();
 
-
 // Payment query
 $paymentQuery = "
     SELECT 
@@ -81,6 +79,7 @@ $paymentQuery = "
         u.id AS user_id,
         u.username,
         u.email,
+        p.name,
         p.amount,
         p.payment_method,
         p.status,
@@ -91,21 +90,25 @@ $paymentQuery = "
     WHERE 1
 ";
 
-
 $paymentParams = [];
 
 // filters
 if (!empty($search)) {
-    $paymentQuery .= " AND (u.username LIKE ? OR u.email LIKE ?)";
+    $paymentQuery .= " AND (u.username LIKE ? OR u.email LIKE ? OR p.name LIKE ?)";
+    $paymentParams[] = "%$search%";
     $paymentParams[] = "%$search%";
     $paymentParams[] = "%$search%";
 }
+
 if (!empty($statusFilter) && $statusFilter !== 'All') {
-    $paymentQuery .= " AND p.status = ?";
+    // Fix: Use membership_status for Active/Pending/Expired filter
+    $paymentQuery .= " AND p.membership_status = ?";
     $paymentParams[] = $statusFilter;
 }
+
 if (!empty($membershipFilter) && $membershipFilter !== 'All') {
-    $paymentQuery .= " AND p.membership_status = ?";
+    // Fix: Use status for Basic/Regular/Premium filter
+    $paymentQuery .= " AND p.status = ?";
     $paymentParams[] = $membershipFilter;
 }
 
@@ -113,8 +116,6 @@ $paymentQuery .= " ORDER BY p.payment_date DESC";
 
 // fetch all payments
 $payments = $db->query($paymentQuery, $paymentParams)->find();
-
-
 
 //recent feedbakcs
 $recentFeedback = $db->query("
@@ -124,13 +125,20 @@ $recentFeedback = $db->query("
                 LIMIT 1
             ")->find();
 
-
-
 // Total feedback
 $feedbackCountStmt = $db->query("SELECT COUNT(*) AS total_feedback FROM feedback");
 $totalFeedback = $feedbackCountStmt->fetch_one()['total_feedback'];
 
-// Pass all to your view
+//select all feedbacks
+$allFeedback = $db->query('SELECT * FROM feedback ORDER BY created_at DESC LIMIT 20')->find();
+
+//updated plan can be modify by admins
+$plan = $db->query('SELECT * FROM membershipplans WHERE id = ?', [1])->fetch_one();
+
+//gym info can be modify by admins
+$info = $db->query('SELECT * FROM admininfo WHERE id = ?', [1])->fetch_one();
+
+
 view_path('dashboards/admin', 'index.php', [
     'userCount' => $userCount,
     'totalPayments' => $totalPayments,
@@ -139,5 +147,8 @@ view_path('dashboards/admin', 'index.php', [
     'recentFeedback' => $recentFeedback,
     'recentPayment' => $recentPayment,
     'users' => $users,
-    'payments' => $payments
+    'payments' => $payments,
+    'allFeedback' => $allFeedback,
+    'info' => $info,
+    'plan' => $plan
 ]);

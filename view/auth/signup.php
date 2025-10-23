@@ -74,9 +74,10 @@ unset($_SESSION['errors']);
                             <div class="flex items-center gap-2 mt-4">
                                 <input type="checkbox" id="signupTerms" name="terms" class="cursor-pointer accent-brand"
                                     required />
-                                <label for="signupTerms" class="extra cursor-pointer text-sm">
-                                    Accept all the <a href="#" class="text-sky-500 hover:underline">Terms and
-                                        Conditions</a>
+                                <label for="signupTerms" class="extra cursor-pointer text-xl">
+                                    Accept all the <a href="/terms" class="text-sky-500 underline">Terms </a>and
+
+                                    <a class="text-sky-500 underline" href="/privacy">Privacy</a>
                                 </label>
                             </div>
 

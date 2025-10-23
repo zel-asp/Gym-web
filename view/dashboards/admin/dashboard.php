@@ -1,11 +1,5 @@
 <div class="page-content active" id="dashboard">
     <div class="flex items-center justify-between gap-2">
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden">
-            <span id="mobileMenuButton" class="bg-gray-800 p-2 rounded-lg text-white">
-                <i class="fas fa-bars"></i>
-            </span>
-        </div>
         <h2 class="lg:hidden text-2xl font-semibold w-full">Dashboard Overview</h2>
     </div>
 

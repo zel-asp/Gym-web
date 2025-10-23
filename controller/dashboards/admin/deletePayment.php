@@ -7,6 +7,7 @@ session_start();
 $config = require base_path('config/config.php');
 $db = new Database($config['database']);
 
+
 // make sure only logged in admin can access
 if (
     !isset($_SESSION['admin']) ||

@@ -1,14 +1,14 @@
 <!-- Sidebar -->
 <div id="sidebar"
-    class="w-64 bg-gray-900 p-0 shadow-lg fixed h-full overflow-y-auto z-10 transition-all duration-300 md:w-64 sidebar-mobile md:sidebar-mobile:translate-x-0">
+    class="sidebar-mobile fixed inset-y-0 left-0 z-30 h-full w-64 bg-gray-900 overflow-y-auto shadow-lg transition-transform duration-300">
 
-    <div class="flex items-center gap-2 p-5 pb-5 mb-5">
-        <h1 class="text-xl font-bold w-full">Padogskei Gym</h1>
+    <div class="flex-center gap-2 p-5 pb-5 mb-5">
+        <h1 class="text-xl font-bold w-full">Padogskei Wild Gym</h1>
 
-        <div class="flex items-center justify-between p-5 pb-5 border-b border-gray-700 mb-5">
-            <!-- Close button visible on mobile only -->
+        <div class="flex items-center justify-between p-5 pb-5 mb-5">
+            <!-- close open -->
             <span id="closeSidebar" class="md:hidden cursor-pointer text-white ">
-                <i class="fas fa-circle-xmark"></i>
+                <span class="fa fa-xmark"></span>
             </span>
         </div>
     </div>

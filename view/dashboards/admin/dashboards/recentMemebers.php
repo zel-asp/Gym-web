@@ -2,7 +2,8 @@
 <div class="bg-gray-900 rounded-lg p-5 shadow-lg mb-8">
     <div class="flex justify-between items-center mb-5">
         <h3 class="text-lg font-semibold">Recent Members</h3>
-        <a href="#" class="text-brand text-sm no-underline view-all" data-page="members">View All</a>
+        <a href="/adminDashboard?tab=members" class="text-brand text-sm no-underline view-all" data-page="members">View
+            All</a>
     </div>
     <div class="overflow-x-auto">
         <table class="w-full border-collapse">
@@ -34,7 +35,7 @@
                                 <?= strtolower($member['status']) !== 'pending' ? htmlspecialchars($member['status']) : '' ?>
                             </td>
 
-                            <!-- Status column -->
+                            <!-- status column -->
                             <td class="p-3 border-b border-gray-700">
                                 <?php if (strtolower($member['status']) === 'pending'): ?>
                                     <span class="text-orange-200">

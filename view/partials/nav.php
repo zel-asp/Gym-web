@@ -19,10 +19,10 @@
 
         <div class="hidden mt-5 md:ml-5 px-15 py-3 flex-col md:flex md:flex-row md:items-center md:gap-6 justify-end md:mt-0 shadow-md rounded-sm w-full md:w-auto "
             id="js-navLinks">
-            <ul class="center-vertical flex-col md:flex-row gap-4 md:gap-6 text-sm md:text-md">
+            <ul class="center-vertical flex-col md:flex-row gap-4 md:gap-5 text-sm md:text-md">
                 <li><a href="/#" class="hover:text-brand">Home</a></li>
                 <li><a href="/#main" class="hover:text-brand">Our Story</a></li>
-                <li><a href="/#offer" class="hover:text-brand">What We Offer</a></li>
+                <li><a href="/#offer" class="hover:text-brand ">Offer</a></li>
                 <li><a href="/#stats" class="hover:text-brand">Stats</a></li>
                 <li><a href="/#gallery" class="hover:text-brand">Gallery</a></li>
                 <li><a href="/#contact" class="hover:text-brand">Contact</a></li>

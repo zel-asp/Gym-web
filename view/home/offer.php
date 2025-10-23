@@ -16,7 +16,7 @@
                     <img src="assets/imgs/offer2.png" alt="Personal Training" class="w-full h-full object-cover">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold mb-5">₱350/15 Days</h3>
+                    <h3 class="text-xl font-bold mb-5">₱<?= htmlspecialchars($plan['Basic']) ?>/15 Days</h3>
                     <p class="text-lightgray mb-4">
                         Great for short-term fitness goals with unlimited access for two weeks.
                     </p>
@@ -33,7 +33,7 @@
                     <img src="assets/imgs/offer3.png" alt="Open 24/7" class="w-full h-full object-cover">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold mb-5">₱700/Monthly</h3>
+                    <h3 class="text-xl font-bold mb-5">₱<?= htmlspecialchars($plan['Regular']) ?>/Monthly</h3>
                     <p class="text-lightgray mb-4">
                         Best value for regular members with full access all month long.
                     </p>
@@ -50,7 +50,7 @@
                     <img src="assets/imgs/offer1.png" alt="Nutrition Planning" class="w-full h-full object-cover">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold mb-5">₱2000/3 Months</h3>
+                    <h3 class="text-xl font-bold mb-5">₱<?= htmlspecialchars($plan['Premium']) ?>/3 Months</h3>
                     <p class="text-justfy text-lightgray mb-4">
                         Unlock three months of unlimited access — the best deal for dedicated members.
                     </p>

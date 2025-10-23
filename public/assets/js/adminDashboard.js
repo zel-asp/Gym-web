@@ -10,8 +10,6 @@ if (mobileMenuButton) {
     mobileMenuButton.addEventListener('click', () => {
         sidebar.classList.toggle('open');
         overlay.classList.toggle('open');
-        mobileIcon.classList.toggle('fa-bars');
-        mobileIcon.classList.toggle('fa-xmark');
     });
 }
 
@@ -69,3 +67,15 @@ navLinks.forEach(link => {
         overlay.classList.remove('open');
     });
 });
+
+
+//for toggle reply form
+function toggleReplyForm(index) {
+    const form = document.getElementById(`reply-form-${index}`);
+    form.classList.toggle('hidden');
+
+    // Optional: Scroll to the form when opened
+    if (!form.classList.contains('hidden')) {
+        form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+}

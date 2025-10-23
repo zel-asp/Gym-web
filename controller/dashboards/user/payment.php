@@ -13,24 +13,29 @@ if (!isset($_SESSION['user'])) {
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fullname = trim($_POST['fullname']);
-        $plan = trim($_POST['plan']); // Example: "15 Days(Basic) - 350"
+        $plan = trim($_POST['plan']); // e.g. "Basic", "Regular", "Premium"
         $payment_method = trim($_POST['payment_method']);
         $userId = $_SESSION['user']['id'];
         $email = $_SESSION['user']['email'];
         $paymentError = [];
+
+        // Define plan prices
+        $planPrices = [
+            'Basic' => 350,
+            'Regular' => 700,
+            'Premium' => 2000
+        ];
 
         // Validate required fields
         if (empty($fullname) || empty($plan) || empty($payment_method)) {
             $paymentError[] = "All fields are required.";
         }
 
-        // Split plan string → "15 Days(Basic) - 350"
-        $parts = explode('-', $plan);
-        $plan_name = trim($parts[0] ?? '');
-        $amount = isset($parts[1]) ? (float) trim($parts[1]) : 0;
-
-        if ($amount <= 0) {
-            $paymentError[] = "Invalid plan amount.";
+        // Validate plan and amount
+        if (!array_key_exists($plan, $planPrices)) {
+            $paymentError[] = "Invalid plan selected.";
+        } else {
+            $amount = (float) $planPrices[$plan];
         }
 
         // Check if user already has a payment
@@ -47,12 +52,12 @@ try {
             exit();
         }
 
+        // Insert payment record
         $db->query(
-            "INSERT INTO payments (user_id, name,email, plan, amount, payment_method, status) 
-             VALUES (?,?, ?, ?, ?, ?, 'Pending')",
-            [$userId, $fullname, $email, $plan_name, $amount, $payment_method]
+            "INSERT INTO payments (user_id, name, email, plan, amount, payment_method, status)
+             VALUES (?, ?, ?, ?, ?, ?, 'Pending')",
+            [$userId, $fullname, $email, $plan, $amount, $payment_method]
         );
-
 
         $_SESSION['paymentId'] = $db->lastInsertId();
 
@@ -66,3 +71,4 @@ try {
 } catch (\Throwable $th) {
     echo "Error: " . htmlspecialchars($th->getMessage()) . " (Line " . $th->getLine() . ")";
 }
+?>

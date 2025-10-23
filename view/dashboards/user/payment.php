@@ -25,16 +25,18 @@
                 <select id="plan-select" name="plan" required
                     class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500 mb-3">
                     <option value="">Select Plan</option>
-                    <option value="15 Days(Basic) - 350">15 Days - ₱350</option>
-                    <option value="Monthly(Regular) - 700">Monthly - ₱700</option>
-                    <option value="Quarterly(Premium) - 2000">Quarterly - ₱2000</option>
+                    <option value="Basic">15 Days (Basic) - ₱<?= htmlspecialchars($plan['Basic'] ?? 350) ?></option>
+                    <option value="Regular">Monthly (Regular) - ₱<?= htmlspecialchars($plan['Regular']) ?? 700 ?></option>
+                    <option value="Premium">Quarterly (Premium) - ₱<?= htmlspecialchars($plan['Premium'] ?? 2000) ?>
+                    </option>
                 </select>
+
 
                 <select id="payment-method" name="payment_method" required
                     class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500 mb-3">
                     <option value="">Choose Payment Method</option>
                     <option value="GCash">GCash</option>
-                    <option value="PayPal">PayPal</option>
+                    <option value="PayPal" disabled>PayPal is not yet available</option>
                 </select>
 
                 <div class="flex justify-end">

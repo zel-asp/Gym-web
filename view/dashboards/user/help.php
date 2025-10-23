@@ -1,48 +1,144 @@
-<!-- Help Section -->
 <section id="help" class="tab-content hidden">
-    <h3 class="text-xl font-bold mb-4">Help & Support</h3>
-    <div class="bg-[#121f2e] p-6 rounded-xl shadow-md w-full space-y-4">
-        <p class="text-gray-300">If you need help using Padogskei Gym, please check the FAQs below or
-            contact our support team.</p>
-        <h4 class="font-semibold border-b border-gray-600 pb-1">FAQs</h4>
-        <ul class="space-y-3 text-gray-300">
-            <li class="flex items-start">
-                <span class="text-orange-400 mr-2 mt-1"><i class="fas fa-question-circle"></i></span>
-                <div>
-                    <span class="text-orange-400 font-semibold">How do I register?</span> — Go to
-                    Membership and fill in your details.
-                </div>
-            </li>
-            <li class="flex items-start">
-                <span class="text-orange-400 mr-2 mt-1"><i class="fas fa-question-circle"></i></span>
-                <div>
-                    <span class="text-orange-400 font-semibold">How can I pay?</span> — Choose Payment
-                    and
-                    select your preferred method.x
-                </div>
-            </li>
-            <li>
-                <span class="text-orange-400 mr-2 mt-1"><i class="fas fa-question-circle"></i></span>
-                <span class="text-orange-400 font-semibold">Need help?</span>
-            </li>
-            <li class="flex items-start">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+        <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Help & Support</h3>
+            <p class="text-gray-400 text-sm">Get assistance with your gym experience</p>
+        </div>
+        <div class="flex items-center gap-4 bg-gray-800 px-4 py-2 rounded-lg mt-4 sm:mt-0">
+            <div class="text-center">
+                <p class="text-xl font-bold text-orange-400">24/7</p>
+                <p class="text-xs text-gray-400">Support</p>
+            </div>
+        </div>
+    </div>
 
-                <div>
-                    <span>Email us at</span>
-                    <a href="https://mail.google.com/mail/?view=cm&to=janzeldols@gmail.com" target="_blank"
-                        class="text-orange-400 underline hover:text-orange-500">
-                        janzeldols@gmail.com
-                    </a>
-
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- FAQs Section -->
+        <div class="bg-[#121f2e] p-6 rounded-xl shadow-md border border-gray-700">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-orange-500/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-question-circle text-orange-400"></i>
                 </div>
-            </li>
-            <li>
-                <span ">Message Us on</span>
-                <a href=" https://www.facebook.com/groups/135169316896319" target="_blank"
-                    class="text-orange-400 underline hover:text-orange-500">
-                    Facebook
-                    </a>
-            </li>
-        </ul>
+                <h4 class="font-semibold text-lg">Frequently Asked Questions</h4>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-gray-800/50 p-4 rounded-lg hover:bg-gray-800 transition-colors">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-user-plus text-orange-400 mt-1 text-sm"></i>
+                        <div>
+                            <h5 class="font-semibold text-orange-400 mb-1">How do I register?</h5>
+                            <p class="text-gray-300 text-sm">Go to the Membership section and fill in your personal
+                                details to create your account.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800/50 p-4 rounded-lg hover:bg-gray-800 transition-colors">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-credit-card text-orange-400 mt-1 text-sm"></i>
+                        <div>
+                            <h5 class="font-semibold text-orange-400 mb-1">How can I pay?</h5>
+                            <p class="text-gray-300 text-sm">Navigate to the Payment section and choose your preferred
+                                payment method (GCash, Cash, etc.).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800/50 p-4 rounded-lg hover:bg-gray-800 transition-colors">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-dumbbell text-orange-400 mt-1 text-sm"></i>
+                        <div>
+                            <h5 class="font-semibold text-orange-400 mb-1">What are the gym hours?</h5>
+                            <p class="text-gray-300 text-sm">We're open 24/7 for all members. Access your dashboard
+                                anytime to check your membership status.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- contact section -->
+        <div class="bg-[#121f2e] p-6 rounded-xl shadow-md border border-gray-700">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-headset text-blue-400"></i>
+                </div>
+                <h4 class="font-semibold text-lg">Contact Support</h4>
+            </div>
+
+            <div class="space-y-4">
+                <!-- emel -->
+                <div class="bg-gray-800/50 p-4 rounded-lg hover:bg-gray-800 transition-colors group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition-colors">
+                            <i class="fas fa-envelope text-orange-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h5 class="font-semibold text-white">Email Support</h5>
+                            <p class="text-gray-400 text-sm mb-2">Get help via email</p>
+                            <a href="https://mail.google.com/mail/?view=cm&to=janzeldols@gmail.com" target="_blank"
+                                class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pesbok -->
+                <div class="bg-gray-800/50 p-4 rounded-lg hover:bg-gray-800 transition-colors group">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+                            <i class="fab fa-facebook text-blue-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h5 class="font-semibold text-white">Facebook Community</h5>
+                            <p class="text-gray-400 text-sm mb-2">Join our community group</p>
+                            <a href="https://www.facebook.com/groups/135169316896319" target="_blank"
+                                class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                <i class="fab fa-facebook"></i>
+                                Visit Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Response -->
+                <div class="bg-green-900/20 border border-green-700 rounded-lg p-4">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-clock text-green-400 mt-1"></i>
+                        <div>
+                            <h6 class="font-semibold text-green-400 text-sm">Quick Response Time</h6>
+                            <p class="text-gray-300 text-xs">We typically respond to all inquiries within 2-4 hours
+                                during business hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Contact -->
+    <div class="mt-6 bg-red-900/20 border border-red-700 rounded-xl p-5">
+        <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-exclamation-triangle text-red-400 text-lg"></i>
+            <h4 class="font-semibold text-red-400">Emergency Contact</h4>
+        </div>
+        <p class="text-gray-300 text-sm mb-3">For urgent matters requiring immediate assistance at the gym facility:</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+            <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-phone text-red-400"></i>
+                <span class="text-gray-300">Front Desk: </span>
+                <span class="text-white font-semibold">(02) 1234-5678</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-map-marker-alt text-red-400"></i>
+                <span class="text-gray-300">Location: </span>
+                <span class="text-white font-semibold">Padogskei Wild Gym Main Branch</span>
+            </div>
+        </div>
     </div>
 </section>

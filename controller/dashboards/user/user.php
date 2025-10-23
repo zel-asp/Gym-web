@@ -24,24 +24,21 @@ $dbUser = $stmt->fetch_one();
 
 if (!$dbUser || $dbUser['session_token'] !== $token) {
     session_destroy();
-    echo json_encode(['status' => 'invalid']);
     header('Location: /login');
     exit();
 }
 
 //feedback
-$feedback = $db->query('SELECT name, feedback_text, rating FROM feedback ORDER BY created_at DESC LIMIT 15')->find();
-
+$feedback = $db->query('SELECT name, feedback_text, rating, admin_reply FROM feedback ORDER BY created_at DESC LIMIT 15')->find();
 
 //membership
 $info = $db->query('SELECT * FROM user_profiles WHERE user_id = ?', [
     $userId
 ])->fetch_one();
 
-//payment
-$paymentId = $_SESSION['paymentId'] ?? '';
 
-$paymentInfo = $db->query('SELECT * FROM payments WHERE id = ? AND user_id = ?', [$paymentId, $userId])->fetch_one();
+//payment
+$paymentInfo = $db->query('SELECT * FROM payments WHERE user_id = ?', [$userId])->fetch_one();
 
 $expiryDate = null;
 
@@ -82,6 +79,8 @@ if ($paymentInfo) {
     }
 }
 
+//updated plan can be modify by admins
+$plan = $db->query('SELECT * FROM membershipplans WHERE id = ?', [1])->fetch_one();
 
 
 view_path('dashboards/user', 'index.php', [
@@ -89,6 +88,7 @@ view_path('dashboards/user', 'index.php', [
     'feedback' => $feedback,
     'info' => $info,
     'expiryDate' => $expiryDate,
-    'paymentInfo' => $paymentInfo
+    'paymentInfo' => $paymentInfo,
+    'plan' => $plan
 ]);
 

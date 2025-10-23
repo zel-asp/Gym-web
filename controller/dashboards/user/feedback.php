@@ -15,7 +15,6 @@ $userId = $_SESSION['user']['id'];
 
 if (isset($_POST['feedback'])) {
 
-    dd($_SESSION['expiration_date']);
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $feedback_text = trim($_POST['feedback_text']);

@@ -1,4 +1,3 @@
-
 <section id="dashboard" class="tab-content">
     <h3 class="text-xl font-bold mb-4">Dashboard</h3>
     <div class="grid grid-cols-1 lg:grid-cols-1 gap-6">
@@ -68,12 +67,14 @@
             <div class="bg-[#121f2e] p-6 rounded-xl shadow-md mt-10 w-full">
                 <h3 class="text-xl font-bold mb-4">Share Your Feedback</h3>
 
-                <?php if (isset($_SESSION['success']) && !empty($_SESSION['success'])): ?>
-                    <?php foreach ($_SESSION['success'] as $message): ?>
-                        <p class="text-green-500 font-semibold mb-4">
-                            <?= htmlspecialchars($message); ?>
-                        </p>
-                    <?php endforeach; ?>
+                <?php if (!empty($_SESSION['success'])): ?>
+                    <div class="mb-4 p-4 bg-green-100 border border-greeb-400 text-green-700 rounded">
+                        <ul class="list-disc list-inside">
+                            <?php foreach ($_SESSION['success'] as $success): ?>
+                                <li><?= htmlspecialchars($success) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                     <?php unset($_SESSION['success']); ?>
                 <?php endif; ?>
 

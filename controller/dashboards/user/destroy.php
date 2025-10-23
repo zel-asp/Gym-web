@@ -26,6 +26,6 @@ try {
     }
 
 } catch (\Throwable $th) {
-    //throw $th;
+    echo "Error: " . htmlspecialchars($th->getMessage()) . " (Line " . $th->getLine() . ")";
 }
 
