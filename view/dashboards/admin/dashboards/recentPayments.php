@@ -1,8 +1,8 @@
 <!-- Recent mmbers section -->
 <div class="bg-gray-900 rounded-lg p-5 shadow-lg mb-8">
     <div class="flex justify-between items-center mb-5">
-        <h3 class="text-lg font-semibold">Recent Members</h3>
-        <a href="/adminDashboard?tab=members" class="text-brand text-sm no-underline view-all" data-page="members">View
+        <h3 class="text-lg font-semibold">Recent Payment</h3>
+        <a href="/adminDashboard?tab=payments" class="text-brand text-sm no-underline view-all" data-page="members">View
             All</a>
     </div>
     <div class="overflow-x-auto">
@@ -53,8 +53,8 @@
                             </td>
 
                             <td class="p-3 border-b border-gray-700">
-                                <form action="/userDelete" method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                <form action="/deletePayment" method="POST"
+                                    onsubmit="return confirm('Are you sure you want to delete this payment?');">
                                     <input type="hidden" name="id" value="<?= $member['id']; ?>">
                                     <input type="hidden" name="__method" value="DELETE">
                                     <button name="delete"

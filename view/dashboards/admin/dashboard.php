@@ -40,7 +40,7 @@
     </div>
 
 
-    <?php require base_path('view/dashboards/admin/dashboards/recentMemebers.php'); ?>
+    <?php require base_path('view/dashboards/admin/dashboards/recentPayments.php'); ?>
 
     <?php require base_path('view/dashboards/admin/dashboards/recentActivity.php'); ?>
 
