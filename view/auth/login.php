@@ -53,7 +53,15 @@ unset($_SESSION['errors']);
 
                             <div class="flex flex-col mb-0">
                                 <label for="loginPassword">Password*</label>
-                                <input type="password" id="loginPassword" name="password" class="LoginInput" required />
+                                <div class="relative">
+                                    <input type="password" id="loginPassword" name="password"
+                                        class="LoginInput pr-10 w-full" required />
+                                    <button type="button"
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none"
+                                        id="togglePassword">
+                                        <i class="fa-regular fa-eye" id="eyeIcon"></i>
+                                    </button>
+                                </div>
                             </div>
 
                             <button

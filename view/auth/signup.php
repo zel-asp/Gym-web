@@ -56,10 +56,17 @@ unset($_SESSION['errors']);
                                 <input type="email" id="signupEmail" name="email" class="LoginInput" required />
                             </div>
 
-                            <div class="flex flex-col mt-3">
-                                <label for="signupPassword" class="text-sm font-medium mb-1">Create Password*</label>
-                                <input type="password" id="signupPassword" name="password" class="LoginInput"
-                                    required />
+                            <div class="flex flex-col mb-0">
+                                <label for="loginPassword">Password*</label>
+                                <div class="relative">
+                                    <input type="password" id="loginPassword" name="password"
+                                        class="LoginInput pr-10 w-full" required />
+                                    <button type="button"
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none"
+                                        id="togglePassword">
+                                        <i class="fa-regular fa-eye" id="eyeIcon"></i>
+                                    </button>
+                                </div>
                             </div>
 
 
