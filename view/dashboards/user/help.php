@@ -121,24 +121,4 @@
         </div>
     </div>
 
-    <!-- Emergency Contact -->
-    <div class="mt-6 bg-red-900/20 border border-red-700 rounded-xl p-5">
-        <div class="flex items-center gap-3 mb-3">
-            <i class="fas fa-exclamation-triangle text-red-400 text-lg"></i>
-            <h4 class="font-semibold text-red-400">Emergency Contact</h4>
-        </div>
-        <p class="text-gray-300 text-sm mb-3">For urgent matters requiring immediate assistance at the gym facility:</p>
-        <div class="flex flex-col sm:flex-row gap-3">
-            <div class="flex items-center gap-2 text-sm">
-                <i class="fas fa-phone text-red-400"></i>
-                <span class="text-gray-300">Front Desk: </span>
-                <span class="text-white font-semibold">(02) 1234-5678</span>
-            </div>
-            <div class="flex items-center gap-2 text-sm">
-                <i class="fas fa-map-marker-alt text-red-400"></i>
-                <span class="text-gray-300">Location: </span>
-                <span class="text-white font-semibold">Padogskei Wild Gym Main Branch</span>
-            </div>
-        </div>
-    </div>
 </section>

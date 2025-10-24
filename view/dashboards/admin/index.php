@@ -25,6 +25,8 @@
             <!-- Dashboard Page -->
             <?php require base_path('view/dashboards/admin/dashboard.php'); ?>
 
+            <?php require base_path('view/dashboards/admin/announcement.php'); ?>
+
             <!-- Members Page -->
             <?php require base_path('view/dashboards/admin/members.php'); ?>
 

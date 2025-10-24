@@ -2,42 +2,80 @@
     <h3 class="text-xl font-bold mb-4">Dashboard</h3>
     <div class="grid grid-cols-1 lg:grid-cols-1 gap-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="bg-[#121f2e] p-6 rounded-xl shadow-md ">
-                <h4 class="font-semibold mb-3 border-b border-gray-600 pb-1">Announcements</h4>
-                <ul class="space-y-3 text-gray-300">
-                    <li class="flex items-start">
-                        <span class="text-orange-400 mr-2 mt-1"><i class="fas fa-dumbbell"></i></span>
-                        <span>New Yoga classes available every Saturday!</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-orange-400 mr-2 mt-1"><i class="fas fa-tag"></i></span>
-                        <span>Promo: Get 10% off annual memberships!</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-orange-400 mr-2 mt-1"><i class="fas fa-clock"></i></span>
-                        <span>Gym open hours: 6 AM - 10 PM daily</span>
-                    </li>
-                </ul>
+            <!-- Announcements Section -->
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-lg border border-gray-700">
+                <div class="flex justify-between items-center mb-6">
+                    <h4 class="font-bold text-xl text-white flex items-center">
+                        <i class="fas fa-bullhorn text-orange-400 mr-3"></i>
+                        Announcements
+                    </h4>
+                </div>
+
+                <?php if (!empty($announcements)): ?>
+                    <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
+                        <?php foreach ($announcements as $announcement): ?>
+                            <div
+                                class="bg-gray-700/50 rounded-xl p-4 border-l-4 border-orange-400 hover:bg-gray-600/50 transition-all duration-300">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="text-xs text-gray-300 bg-gray-600 px-3 py-1 rounded-full flex items-center">
+                                        <i class="fas fa-calendar-alt mr-2 text-orange-400"></i>
+                                        <?= date('M j, Y', strtotime($announcement['created_at'] ?? 'now')) ?>
+                                    </span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-orange-400 mr-3 mt-1 text-lg flex-shrink-0">
+                                        <i class="fas fa-bullhorn"></i>
+                                    </span>
+                                    <div class="flex-1">
+                                        <h5 class="font-semibold text-white text-lg mb-2">
+                                            <?= htmlspecialchars($announcement['title']); ?>
+                                        </h5>
+                                        <p class="text-gray-300 text-sm leading-relaxed">
+                                            <?= htmlspecialchars($announcement['details'] ?? 'No description available'); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else: ?>
+                    <div class="bg-gray-700/50 rounded-xl p-8 text-center border border-gray-600">
+                        <i class="fas fa-bullhorn text-4xl text-gray-500 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">No Announcements</h3>
+                        <p class="text-gray-400">There are no announcements to display at this time.</p>
+                    </div>
+                <?php endif; ?>
             </div>
 
-            <?php if (is_array($paymentInfo)): ?>
-                <div class="bg-[#121f2e] p-6 rounded-xl shadow-md">
-                    <h4 class="font-semibold mb-3 border-b border-gray-600 pb-1 text-center lg:text-left">Quick Summary</h4>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Active Membership:</span>
+            <!-- Quick Summary Section -->
+            <?php if (!empty($paymentInfo)): ?>
+                <div class="bg-[#121f2e] p-6 rounded-xl shadow-md border border-gray-700">
+                    <h4 class="font-semibold text-lg mb-4 border-b border-gray-600 pb-2 text-center lg:text-left">Quick
+                        Summary</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                            <span class="text-gray-300 flex items-center">
+                                <i class="fas fa-id-card mr-2 text-orange-400"></i>
+                                Active Membership
+                            </span>
                             <span class="text-orange-400 font-semibold">
                                 <?= htmlspecialchars($paymentInfo['plan'] ?? 'N/A'); ?>
                             </span>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Membership Plan:</span>
+                        <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                            <span class="text-gray-300 flex items-center">
+                                <i class="fas fa-chart-line mr-2 text-orange-400"></i>
+                                Membership Plan
+                            </span>
                             <span class="text-orange-400 font-semibold">
                                 <?= htmlspecialchars($paymentInfo['membership_status'] ?? 'N/A'); ?>
                             </span>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Last Payment:</span>
+                        <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                            <span class="text-gray-300 flex items-center">
+                                <i class="fas fa-calendar-check mr-2 text-orange-400"></i>
+                                Last Payment
+                            </span>
                             <span class="text-orange-400 font-semibold">
                                 <?= htmlspecialchars(date('F j, Y', strtotime($paymentInfo['payment_date'] ?? '')) ?: 'N/A'); ?>
                             </span>
@@ -45,13 +83,16 @@
                     </div>
                 </div>
             <?php else: ?>
-                <div class="bg-[#121f2e] p-6 rounded-xl shadow-md">
-                    <h4 class="font-semibold mb-3 border-b border-gray-600 pb-1 text-center lg:text-left">Quick Summary</h4>
-                    <p class="text-center text-gray-400">No active membership found.</p>
+                <div class="bg-[#121f2e] p-6 rounded-xl shadow-md border border-gray-700">
+                    <h4 class="font-semibold text-lg mb-4 border-b border-gray-600 pb-2 text-center lg:text-left">Quick
+                        Summary</h4>
+                    <div class="text-center p-4">
+                        <i class="fas fa-exclamation-triangle text-3xl text-gray-500 mb-3"></i>
+                        <p class="text-gray-400">No active membership found.</p>
+                    </div>
                 </div>
             <?php endif; ?>
         </div>
-
 
         <!-- if user is a member -->
         <?php if (empty($paymentInfo) || $paymentInfo['membership_status'] !== 'Active'): ?>
@@ -100,7 +141,7 @@
                             class="p-3 rounded bg-[#1a2a3f] w-full focus:outline-none focus:ring-1 focus:ring-orange-500" />
 
                     </div>
-                    <textarea name="feedback_text" placeholder="Write your feedback here..." required
+                    <textarea name="feedback_text" placeholder="Write your feedback here..." required maxlength="1000"
                         class="p-3 rounded bg-[#1a2a3f] w-full h-32 focus:outline-none focus:ring-1 focus:ring-orange-500"><?= htmlspecialchars($_POST['feedback_text'] ?? '') ?></textarea>
 
                     <!-- Hidden input to store star rating -->

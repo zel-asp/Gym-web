@@ -79,3 +79,17 @@ function toggleReplyForm(index) {
         form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 }
+
+
+// for announcement add new button
+function toggleAnnouncementForm() {
+    const modal = document.getElementById('announcementModal');
+    modal.classList.toggle('hidden');
+}
+
+// Close modal when clicking outside
+document.getElementById('announcementModal').addEventListener('click', function (e) {
+    if (e.target === this) {
+        toggleAnnouncementForm();
+    }
+});

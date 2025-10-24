@@ -76,7 +76,7 @@
 
                 <div>
                     <label class="block text-sm font-medium mb-2 text-gray-300">Address</label>
-                    <textarea name="address" required
+                    <textarea name="address" required maxlength="1000"
                         class="w-full p-3 rounded-lg border border-gray-600 bg-gray-800 text-gray-100 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-colors h-24 resize-none"
                         placeholder="Enter gym address"><?= htmlspecialchars($info['address']) ?></textarea>
                 </div>

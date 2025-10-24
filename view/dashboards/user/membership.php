@@ -77,7 +77,7 @@
                             value="<?= htmlspecialchars($info['weight'] ?? ''); ?>"
                             class="p-3 rounded bg-white w-full focus:outline-none focus:ring-1 focus:ring-orange-500" />
 
-                        <textarea name="medical_conditions" placeholder="Medical Conditions"
+                        <textarea name="medical_conditions" placeholder="Medical Conditions" maxlength="1000"
                             class="p-3 rounded bg-white w-full h-24 focus:outline-none focus:ring-1 focus:ring-orange-500 md:col-span-2"><?= htmlspecialchars($info['medical_conditions'] ?? ''); ?></textarea>
                     </div>
                 </div>

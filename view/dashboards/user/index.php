@@ -48,8 +48,6 @@
                 <!-- Help Section -->
                 <?php require base_path('view/dashboards/user/help.php'); ?>
 
-
-                <?php require base_path('view/dashboards/user/settings.php'); ?>
             </main>
         </div>
 

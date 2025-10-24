@@ -82,6 +82,8 @@ if ($paymentInfo) {
 //updated plan can be modify by admins
 $plan = $db->query('SELECT * FROM membershipplans WHERE id = ?', [1])->fetch_one();
 
+//announcement
+$announcements = $db->query('SELECT * FROM announcements ORDER BY id DESC LIMIT 2')->find();
 
 view_path('dashboards/user', 'index.php', [
     'username' => $username,
@@ -89,6 +91,7 @@ view_path('dashboards/user', 'index.php', [
     'info' => $info,
     'expiryDate' => $expiryDate,
     'paymentInfo' => $paymentInfo,
-    'plan' => $plan
+    'plan' => $plan,
+    'announcements' => $announcements
 ]);
 

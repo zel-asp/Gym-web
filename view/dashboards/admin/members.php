@@ -48,7 +48,8 @@
                             <td class="p-3 border-b border-gray-700"><?= htmlspecialchars($record['user_id']); ?></td>
                             <td class="p-3 border-b border-gray-700"><?= htmlspecialchars($record['username']); ?></td>
                             <td class="p-3 border-b border-gray-700 truncate max-w-xs">
-                                <?= htmlspecialchars($record['email']); ?></td>
+                                <?= htmlspecialchars($record['email']); ?>
+                            </td>
                             <td class="p-3 border-b border-gray-700"><?= htmlspecialchars($record['status']); ?></td>
                             <td class="p-3 border-b border-gray-700 whitespace-nowrap">
                                 <?= htmlspecialchars(date('M d, Y', strtotime($record['created_at']))); ?>
@@ -72,15 +73,19 @@
                                 <div class="flex flex-col sm:flex-row gap-2">
                                     <!-- Delete (admin only) -->
                                     <?php if (isset($_SESSION['admin'])): ?>
-                                        <form action="/userDelete" method="POST"
-                                            onsubmit="return confirm('Are you sure you want to delete this user?');">
-                                            <input type="hidden" name="id" value="<?= $record['user_id']; ?>">
-                                            <input type="hidden" name="__method" value="DELETE">
-                                            <button name="delete"
-                                                class="w-full sm:w-auto bg-transparent border border-gray-600 text-red-400 rounded-lg px-3 py-1 text-sm hover:bg-red-900 transition-colors">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        <?php if ($record['user_id'] != 1 || $record['email'] !== 'admin_padogskie@gmail.com'): ?>
+                                            <form action="/userDelete" method="POST"
+                                                onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                                <input type="hidden" name="id" value="<?= htmlspecialchars($record['user_id']); ?>">
+                                                <input type="hidden" name="__method" value="DELETE">
+                                                <button name="delete"
+                                                    class="w-full sm:w-auto bg-transparent border border-gray-600 text-red-400 rounded-lg px-3 py-1 text-sm hover:bg-red-900 transition-colors">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        <?php else: ?>
+                                            <span class="text-gray-400 italic text-sm">Admin account</span>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
                             </td>

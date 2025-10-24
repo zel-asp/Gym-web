@@ -35,9 +35,14 @@ $router->get('/adminDashboard', 'controller/dashboards/admin/get.php');
 //admin
 $router->delete('/userDelete', 'controller/dashboards/admin/deleteUser.php');
 $router->delete('/deletePayment', 'controller/dashboards/admin/deletePayment.php');
+$router->delete('/deleteFeedback', 'controller/dashboards/admin/deleteFeedback.php');
 
 $router->patch('/updateMembership', 'controller/dashboards/admin/patch.php');
 $router->patch('/reply', 'controller/dashboards/admin/reply.php');
 $router->patch('/updateInfo', 'controller/dashboards/admin/adminInfo.php');
 $router->patch('/updatePlanPrice', 'controller/dashboards/admin/updatePlanPrice.php');
+
+$router->post('/createAnnouncement', 'controller/dashboards/admin/createAnnouncement.php');
+$router->delete('/deleteAnnouncement', 'controller/dashboards/admin/deleteAnnouncement.php');
+
 

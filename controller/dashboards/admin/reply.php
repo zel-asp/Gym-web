@@ -17,8 +17,8 @@ if (!isset($_SESSION['admin'])) {
 $feedbackId = $_POST['feedbackId'];
 $reply = $_POST['reply_message'];
 
-$errors = [];
-$success = [];
+$deleteError = [];
+$feedbackDeleted = [];
 
 try {
 
@@ -32,14 +32,14 @@ try {
 
             $success[] = 'Replied Successfully';
 
-            $_SESSION['success'] = $success;
+            $_SESSION['$feedbackDeleted'] = $feedbackDeleted;
 
             header('Location: /adminDashboard?tab=feedback');
         }
 
-        $errors[] = 'Error: Try again';
+        $deleteError[] = 'Error: Try again';
 
-        $_SESSION['success'] = $errors;
+        $_SESSION['deleteError'] = $deleteError;
 
     }
 

@@ -25,6 +25,14 @@
         <li class="mb-1">
             <a href="#"
                 class="nav-link flex items-center p-3 rounded-lg text-gray-100 hover:bg-gray-700 hover:text-brand transition-all duration-300"
+                data-page="announcement">
+                <i class="fas fa-home mr-3 text-lg"></i>
+                <span>Announcement</span>
+            </a>
+        </li>
+        <li class="mb-1">
+            <a href="#"
+                class="nav-link flex items-center p-3 rounded-lg text-gray-100 hover:bg-gray-700 hover:text-brand transition-all duration-300"
                 data-page="members">
                 <i class="fas fa-users mr-3 text-lg"></i>
                 <span>Members</span>

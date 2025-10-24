@@ -9,13 +9,10 @@ $db = new Database($config['database']);
 
 
 // make sure only logged in admin can access
-if (
-    !isset($_SESSION['admin']) ||
-    !isset($_SESSION['admin']['logged_in']) ||
-    $_SESSION['admin']['role'] !== 'admin'
-) {
+
+if (!isset($_SESSION['admin'])) {
     abort(401);
-    header('Location: /login?error=Unauthorized+access');
+    header('Location: /login');
     exit();
 }
 

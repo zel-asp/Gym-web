@@ -138,6 +138,9 @@ $plan = $db->query('SELECT * FROM membershipplans WHERE id = ?', [1])->fetch_one
 //gym info can be modify by admins
 $info = $db->query('SELECT * FROM admininfo WHERE id = ?', [1])->fetch_one();
 
+//announcement
+$announcements = $db->query('SELECT * FROM announcements')->find();
+
 
 view_path('dashboards/admin', 'index.php', [
     'userCount' => $userCount,
@@ -150,5 +153,6 @@ view_path('dashboards/admin', 'index.php', [
     'payments' => $payments,
     'allFeedback' => $allFeedback,
     'info' => $info,
-    'plan' => $plan
+    'plan' => $plan,
+    'announcements' => $announcements
 ]);
