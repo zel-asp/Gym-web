@@ -20,10 +20,10 @@
             <div>
                 <h3 class="text-gray text-xl font-bold mb-4 ">Contact</h3>
                 <ul class="space-y-2 text-gray-400">
-                    <li>Horacio Dela Costa Homes 2</li>
-                    <li>Caloocan City, Philippines</li>
-                    <li>PadogskieWildgym@gmail.com</li>
-                    <li>Mr. Cyril P. Gatchalian</li>
+                    <li><?= htmlspecialchars($info['address']) ?></li>
+                    <li><?= htmlspecialchars($info['phone']) ?></li>
+                    <li>P<?= htmlspecialchars($info['email']) ?></li>
+                    <li><?= htmlspecialchars($info['name']) ?></li>
                 </ul>
             </div>
             <div>

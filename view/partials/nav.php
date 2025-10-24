@@ -37,9 +37,9 @@
                         Login
                     </a>
 
-                    <a href="#offer"
+                    <a href="/signup"
                         class="w-full sm:w-70 md:w-auto rounded-lg bg-black px-4 py-2 text-white hover:bg-brand cursor-pointer text-center">
-                        Join now
+                        Sign Up
                     </a>
                 <?php else: ?>
                     <!-- logged in -->

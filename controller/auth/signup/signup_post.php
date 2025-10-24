@@ -27,7 +27,10 @@ if (isset($_POST['register'])) {
     }
 
     if (strlen($password) < 8) {
-        $errors[] = 'Password must be at least 8 characters long.';
+        $errors[] = 'Password id too short';
+    }
+    if (strlen($password) > 15) {
+        $errors[] = 'Password id too long';
     }
 
     if ($password !== $confirm_password) {

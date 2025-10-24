@@ -10,7 +10,6 @@
             <!-- Page Header -->
             <div class="text-center mb-12">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Terms of Service</h1>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Last updated: <?php echo date('F j, Y'); ?></p>
             </div>
 
             <!-- Table of Contents -->
@@ -64,10 +63,10 @@
             <!-- Introduction -->
             <div class="bg-white rounded-lg shadow-sm p-6 mb-8 border border-gray-200">
                 <p class="mb-4 text-lg">Welcome to <span class="font-semibold text-orange-500">Padogskei Wild
-                        Gym</span>! By accessing or using our services, website, or mobile platform, you agree to comply
+                        Gym</span>! By accessing or using our services, website, you agree to comply
                     with and be bound by the following terms and conditions.</p>
-                <p class="text-gray-600">Please read these Terms of Service carefully before using our website, mobile
-                    platform, or services. These terms govern your use of our digital platforms and physical facilities.
+                <p class="text-gray-600">Please read these Terms of Service carefully before using our website, or
+                    services. These terms govern your use of our digital platforms and physical facilities.
                 </p>
             </div>
 
@@ -83,7 +82,7 @@
                     </div>
                     <div class="pl-11">
                         <p class="mb-4">
-                            You may use our gym services, website, and mobile platform for lawful purposes only. Any
+                            You may use our gym services, website platform for lawful purposes only. Any
                             unauthorized or illegal use is strictly prohibited.
                         </p>
                         <div class="bg-orange-50 border-l-4 border-orange-500 p-4 my-4">
@@ -116,14 +115,12 @@
                         </p>
                         <h3 class="font-semibold text-gray-700 mb-2">Membership Requirements:</h3>
                         <ul class="list-disc pl-5 mb-4 space-y-2">
-                            <li>Membership cards must be presented upon entry</li>
                             <li>Membership fees are non-refundable except as required by law</li>
                             <li>Membership may be suspended for violation of gym policies</li>
-                            <li>Automatic renewal terms apply as selected during registration</li>
                         </ul>
                         <div class="bg-gray-50 rounded p-4 my-4">
                             <h3 class="font-semibold text-gray-700 mb-2">Online Registration:</h3>
-                            <p class="text-sm text-gray-700">By registering through our website or mobile platform, you
+                            <p class="text-sm text-gray-700">By registering through our website platform, you
                                 acknowledge that all provided information is accurate and complete. Padogskei Wild Gym
                                 reserves the right to verify membership information and suspend accounts with fraudulent
                                 details.</p>
@@ -147,15 +144,11 @@
                             <h3 class="font-semibold text-gray-700 mb-2">Payment Methods Accepted:</h3>
                             <ul class="list-disc pl-5 space-y-1">
                                 <li>GCash</li>
-                                <li>Credit/Debit Cards (Visa, MasterCard)</li>
-                                <li>Bank Transfers</li>
                                 <li>Cash (at our physical location only)</li>
                             </ul>
                         </div>
                         <h3 class="font-semibold text-gray-700 mb-2">Payment Terms:</h3>
                         <ul class="list-disc pl-5 space-y-2">
-                            <li>Recurring payments will be automatically charged on due dates</li>
-                            <li>Failed payments may incur administrative fees</li>
                             <li>Members must maintain valid payment information</li>
                             <li>Refund requests must be submitted in writing within 7 days</li>
                         </ul>
@@ -207,7 +200,6 @@
                         <h3 class="font-semibold text-gray-700 mb-2">Data Collection and Use:</h3>
                         <ul class="list-disc pl-5 mb-4 space-y-2">
                             <li>We collect personal information for membership management and service improvement</li>
-                            <li>Payment information is processed securely through encrypted channels</li>
                             <li>Personal data will not be shared with third parties without consent, except as required
                                 by law</li>
                             <li>Members may request access to or correction of their personal data</li>
@@ -244,31 +236,6 @@
                         </ul>
                     </div>
                 </section>
-
-                <section id="changes" class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 scroll-mt-20">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="bg-orange-100 text-orange-600 rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">
-                            7</div>
-                        <h2 class="text-2xl font-semibold text-gray-800">Changes to Terms</h2>
-                    </div>
-                    <div class="pl-11">
-                        <p class="mb-4">
-                            We may update these Terms of Service from time to time. Changes will be effective
-                            immediately upon posting on our website.
-                        </p>
-                        <p class="text-gray-600 text-sm mb-4">
-                            We encourage you to periodically review this page for the latest information on our terms of
-                            service. Continued use of our services after changes constitutes acceptance of the modified
-                            terms.
-                        </p>
-                        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
-                            <p class="text-sm text-gray-700"><span class="font-semibold">Notification:</span> For
-                                material changes, we will notify registered members via email or through platform
-                                notifications at least 15 days before changes take effect.</p>
-                        </div>
-                    </div>
-                </section>
             </div>
 
             <!-- Governing Law Section -->
@@ -286,11 +253,11 @@
                 <p class="mb-6 max-w-2xl mx-auto">If you have any questions regarding these terms, please don't hesitate
                     to contact us.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="mailto:info@padogskeigym.com"
+                    <a href="/signup"
                         class="inline-block bg-white text-orange-500 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-md">
-                        Contact Us
+                        Go back
                     </a>
-                    <a href="/privacy-policy"
+                    <a href="/privacy"
                         class="inline-block border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-orange-500 transition-colors duration-300">
                         Privacy Policy
                     </a>
@@ -299,9 +266,6 @@
 
         </div>
 
-        <?php require base_path('view/partials/footer.php'); ?>
+    </body>
 
-
-
-        <style>
-            </body></html>
+</html>

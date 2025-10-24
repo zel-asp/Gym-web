@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<aside class="sidebar w-64 bg-[#121f2e] p-5 flex flex-col justify-between fixed lg:static h-100 z-50">
+<aside class="sidebar w-64 bg-[#121f2e] p-5 flex flex-col justify-between fixed lg:static z-50">
     <div>
         <h1 class="text-xl font-bold mb-8 text-center hidden lg:block">Padogskei Wild Gym</h1>
         <nav class="space-y-3">

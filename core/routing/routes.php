@@ -13,6 +13,7 @@ $router->get('/login', 'controller/auth/login/initAuth.php');
 $router->post('/login', 'controller/auth/login/login_post.php');
 
 $router->get('/terms', 'view/terms-privacy/terms.php');
+$router->get('/privacy', 'view/terms-privacy/privacy.php');
 
 $router->get('/logout', 'controller/auth/logout.php');
 

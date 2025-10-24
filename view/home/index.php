@@ -10,7 +10,7 @@
         <!-- navigation -->
         <?php require base_path('view/partials/nav.php'); ?>
 
-        <!-- Landing Page -->
+        <!-- anding Page -->
         <div class="w-full h-screen relative" id="landing">
 
             <img src="assets/imgs/background.jpg" class=" w-full h-full object-cover">
@@ -22,10 +22,13 @@
                     <img src="assets/imgs/logo.png" alt="padogskie Logo" class="w-[180px] mx-auto">
                 </div>
                 <div class="text-white text-center flex-center flex-col  text-4xl font-bold">
-                    <h1>Start a better shape of you!<span class="text-brand"> Come join us!</span> </h1>
-                    <button
-                        class="flex lg:self-start text-sm text-brand p-2 md:py-2 md:px-4 mt-3 bg-white hover:text-white hover:bg-brand rounded-lg">Learn
-                        more</button>
+                    <h1>
+                        Start a better shape of you!<span class="text-brand"> Come join us!</span>
+                    </h1>
+                    <a href="#offer"
+                        class="flex lg:self-start text-sm text-brand p-2 md:py-2 md:px-4 mt-3 bg-white hover:text-white hover:bg-brand rounded-lg">Join
+                        now
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <img src="assets/imgs/logo.png" alt="padogskie Logo" class="w-[150px] md:w-auto mx-auto">
