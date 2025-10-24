@@ -18,6 +18,7 @@ if (isset($_POST['login'])) {
         $errors[] = 'Please fill in all fields.';
     }
 
+
     if (empty($errors)) {
         try {
             $stmt = $db->query('SELECT * FROM users WHERE email = :email', [':email' => $email]);

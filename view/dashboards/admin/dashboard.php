@@ -3,18 +3,6 @@
         <h2 class="lg:hidden text-2xl font-semibold w-full">Dashboard Overview</h2>
     </div>
 
-    <div class="flex justify-between items-center mb-8 w-full">
-        <h2 class="hidden lg:block text-2xl font-semibold">Dashboard Overview</h2>
-        <a href="/">
-            <div
-                class="hidden lg:flex items-center space-x-3 text-blue-500 p-4 cursor-pointer rounded-lg bg-[#1c2d42] transition-colors">
-                <span class="fa fa-arrow-left"></span>
-                <p>home page</p>
-            </div>
-        </a>
-    </div>
-
-
     <!-- Stats Grid -->
     <div class="grid grid-cols-1 gap-5 mb-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- Total Members -->

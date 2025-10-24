@@ -4,72 +4,86 @@ use Core\Database;
 session_start();
 
 $config = require base_path('config/config.php');
-
 $db = new Database($config['database']);
 
 $errors = [];
 
 if (isset($_POST['register'])) {
 
-    //values from form
+    // Get values from form
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm_password = $_POST['password_confirm'];
     $terms = isset($_POST['terms']) ? 1 : 0;
-    $sessionToken = bin2hex(random_bytes(32));
 
+    // Validate inputs
     if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
-        $error[] = 'Please complete all the input field';
+        $errors[] = 'Please complete all the input fields.';
     }
 
-    //validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error[] = 'Invalid Email';
+        $errors[] = 'Invalid email address.';
+    }
+
+    if (strlen($password) < 8) {
+        $errors[] = 'Password must be at least 8 characters long.';
     }
 
     if ($password !== $confirm_password) {
-        $error[] = 'Password do t=not match';
+        $errors[] = 'Passwords do not match.';
     }
 
-    //if they check the terms
     if (!$terms) {
-        $error[] = 'You must accept the Terms and Conditions.';
+        $errors[] = 'You must accept the Terms and Conditions.';
     }
 
-    if (empty($error)) {
+    // Proceed only if no errors
+    if (empty($errors)) {
         try {
+            // Check if username or email already exists
+            $stmt = $db->query(
+                'SELECT id FROM users WHERE email = :email OR username = :username',
+                [
+                    ':email' => $email,
+                    ':username' => $username
+                ]
+            );
 
-            $stmt = $db->query('SELECT id FROM users WHERE email = :email OR username = :username', [
-                ':email' => $email,
-                'username' => $username
-            ]);
-
-            //check if the user is alrwady existed
             if ($stmt->count() > 0) {
                 $errors[] = 'Username or email already exists.';
-            } else {
-                $hash_password = password_hash($password, PASSWORD_BCRYPT);
+                $_SESSION['errors'] = $errors;
+                header('Location: /signup');
+                exit();
+            }
 
-                $stmt = $db->query('INSERT INTO users (username, email, password, terms_accepted) VALUES (?, ?, ?, ?)', [
+            // Hash password
+            $hash_password = password_hash($password, PASSWORD_BCRYPT);
+
+            // Insert new user
+            $db->query(
+                'INSERT INTO users (username, email, password, terms_accepted) VALUES (?, ?, ?, ?)',
+                [
                     $username,
                     $email,
                     $hash_password,
-                    $terms,
-                ]);
+                    $terms
+                ]
+            );
 
-                header('Location: /login');
-                exit();
-
-            }
-
-            $_SESSION['errors'] = $errors;
-            header('Location: /signup');
+            // Redirect to login
+            header('Location: /login');
             exit();
 
         } catch (\Throwable $th) {
-            echo $th->getMessage();
+            // You may log errors in production
+            $_SESSION['errors'] = ['Something went wrong. Please try again later.'];
+            header('Location: /signup');
+            exit();
         }
+    } else {
+        $_SESSION['errors'] = $errors;
+        header('Location: /signup');
+        exit();
     }
-
 }

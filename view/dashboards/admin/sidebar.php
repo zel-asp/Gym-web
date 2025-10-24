@@ -2,6 +2,8 @@
 <div id="sidebar"
     class="sidebar-mobile fixed inset-y-0 left-0 z-30 h-full w-64 bg-gray-900 overflow-y-auto shadow-lg transition-transform duration-300">
 
+
+
     <div class="flex-center gap-2 p-5 pb-5 mb-5">
         <h1 class="text-xl font-bold w-full">Padogskei Wild Gym</h1>
 
@@ -64,7 +66,7 @@
         </li>
         <a href="/">
             <div
-                class="lg:hidden flex items-center space-x-3 text-blue-500 p-4 cursor-pointer rounded-lg hover:bg-[#1c2d42] transition-colors ">
+                class=" flex items-center space-x-3 text-blue-500 p-4 cursor-pointer rounded-lg hover:bg-[#1c2d42] transition-colors ">
                 <span class="fa fa-arrow-left "></span>
                 <p>Home Page</p>
             </div>
