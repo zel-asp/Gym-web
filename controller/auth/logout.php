@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 use Core\Database;
 
 $config = require base_path('config/config.php');

@@ -14,7 +14,7 @@
     <?php endif; ?>
 
 
-    <?php if (empty($paymentInfo)): ?>
+    <?php if (empty($paymentInfo) || $paymentInfo['status'] === 'Expired'): ?>
         <!-- No payment yet -->
         <div id="payment-form-container" class="bg-[#121f2e] p-6 rounded-xl shadow-md w-full">
             <form action="/pay" method="POST">

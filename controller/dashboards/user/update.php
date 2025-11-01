@@ -2,7 +2,7 @@
 
 use Core\Database;
 
-session_start();
+
 
 $config = require base_path('config/config.php');
 

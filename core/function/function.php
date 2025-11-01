@@ -24,8 +24,6 @@ function view_path($folder, $viewLocation, $attritutes = [])
 }
 
 
-
-
 function abort($code = 404)
 {
     http_response_code($code);

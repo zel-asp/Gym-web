@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 $errors = $_SESSION['errors'] ?? [];
 
