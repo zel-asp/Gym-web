@@ -4,6 +4,7 @@ node_modules/
 # Tailwind CLI binary
 tailwindcss
 padogskiedb.sql
+todo.txt
 
 # Build output
 public/assets/css/style.css
